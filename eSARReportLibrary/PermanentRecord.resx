@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="StudentSubject.ParameterValues" xml:space="preserve">
+    <value>{"@StudentID":"20140001"}</value>
+  </metadata>
+  <data name="StudentSubject.SelectCommand" xml:space="preserve">
+    <value>select st.StudentID,
+sb.SubjectCode, lA.Description,
+CASE
+	WHEN ss.FirstPeriodicRating = NULL THEN 0
+	ELSE ss.FirstPeriodicRating
+END as "1G", 
+CASE
+	WHEN ss.FirstPeriodicRating = NULL THEN ' '
+	WHEN ss.FirstPeriodicRating &lt; 75 THEN 'D'
+	WHEN ss.FirstPeriodicRating &gt; 74 AND ss.FirstPeriodicRating &lt; 80 THEN 'FS'
+	WHEN ss.FirstPeriodicRating &gt; 79 AND ss.FirstPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.FirstPeriodicRating &gt; 84 AND ss.FirstPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.FirstPeriodicRating &gt; 89 THEN 'O'
+END as "1P",
+CASE
+	WHEN ss.SecondPeriodicRating = NULL THEN 0
+	ELSE ss.SecondPeriodicRating
+END as "2G",
+CASE
+	WHEN ss.SecondPeriodicRating = NULL THEN ' '
+	WHEN ss.SecondPeriodicRating &lt; 75 THEN 'D'
+	WHEN ss.SecondPeriodicRating &gt; 74 AND ss.SecondPeriodicRating &lt; 80 THEN 'FS'
+	WHEN ss.SecondPeriodicRating &gt; 79 AND ss.SecondPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.SecondPeriodicRating &gt; 84 AND ss.SecondPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.SecondPeriodicRating &gt; 89 THEN 'O'
+END as "2P",
+CASE
+	WHEN ss.ThirdPeriodicRating = NULL THEN 0
+	ELSE ss.ThirdPeriodicRating
+END as "3G",
+CASE
+	WHEN ss.ThirdPeriodicRating = NULL THEN ' '
+	WHEN ss.ThirdPeriodicRating &lt; 75 THEN 'D'
+	WHEN ss.ThirdPeriodicRating &gt; 74 AND ss.ThirdPeriodicRating &lt; 80 THEN 'FS'
+	WHEN ss.ThirdPeriodicRating &gt; 79 AND ss.ThirdPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.ThirdPeriodicRating &gt; 84 AND ss.ThirdPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.ThirdPeriodicRating &gt; 89 THEN 'O'
+END as "3P",
+CASE
+	WHEN ss.FourthPeriodicRating = NULL THEN 0
+	ELSE ss.FourthPeriodicRating
+END as "4G",
+CASE
+	WHEN ss.FourthPeriodicRating = NULL THEN ' '
+	WHEN ss.FourthPeriodicRating &lt; 75 THEN 'D'
+	WHEN ss.FourthPeriodicRating &gt; 74 AND ss.FourthPeriodicRating &lt; 80 THEN 'FS'
+	WHEN ss.FourthPeriodicRating &gt; 79 AND ss.FourthPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.FourthPeriodicRating &gt; 84 AND ss.FourthPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.FourthPeriodicRating &gt; 89 THEN 'O'
+END as "4P",
+CASE
+	WHEN ss.FourthPeriodicRating = NULL THEN 0
+	ELSE ss.FourthPeriodicRating
+END as "FG",
+CASE
+	WHEN ss.FourthPeriodicRating = NULL THEN ' '
+	WHEN ss.FourthPeriodicRating &lt; 75 THEN 'D'
+	WHEN ss.FourthPeriodicRating &gt; 74 AND ss.FourthPeriodicRating &lt; 80 THEN 'FS'
+	WHEN ss.FourthPeriodicRating &gt; 79 AND ss.FourthPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.FourthPeriodicRating &gt; 84 AND ss.FourthPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.FourthPeriodicRating &gt; 89 THEN 'O'
+END as "FP"
+from Students as st
+join StudentEnrollments stE on ste.StudentId = st.StudentId
+left outer join Subjects sb on st.GradeLevel = sb.GradeLevel
+join LearningAreas lA on lA.LearningAreaCode = sb.LearningAreaCode
+left outer join StudentSubjects ss on SUBSTRING(ss.StudentSY,1,8) = st.StudentId and ss.SubjectCode = sb.SubjectCode
+where  st.StudentId = @StudentID
+order by ss.StudentSY asc</value>
+  </data>
+  <metadata name="StudentTrait.ParameterValues" xml:space="preserve">
+    <value>{"@StudentID":"20140001"}</value>
+  </metadata>
+  <data name="StudentTrait.SelectCommand" xml:space="preserve">
+    <value>select st.StudentID,
+sb.Description,
+CASE
+	WHEN ss.FirstPeriodicRating = NULL THEN ' '
+	WHEN ss.FirstPeriodicRating &lt; 75 THEN 'NI'
+	WHEN ss.FirstPeriodicRating &gt; 74 AND ss.FirstPeriodicRating &lt; 80 THEN 'MS'
+	WHEN ss.FirstPeriodicRating &gt; 79 AND ss.FirstPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.FirstPeriodicRating &gt; 84 AND ss.FirstPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.FirstPeriodicRating &gt; 89 THEN 'O'
+END as "1",
+CASE
+	WHEN ss.SecondPeriodicRating = NULL THEN ' '
+	WHEN ss.SecondPeriodicRating &lt; 75 THEN 'NI'
+	WHEN ss.SecondPeriodicRating &gt; 74 AND ss.SecondPeriodicRating &lt; 80 THEN 'MS'
+	WHEN ss.SecondPeriodicRating &gt; 79 AND ss.SecondPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.SecondPeriodicRating &gt; 84 AND ss.SecondPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.SecondPeriodicRating &gt; 89 THEN 'O'
+END as "2",
+CASE
+	WHEN ss.ThirdPeriodicRating = NULL THEN ' '
+	WHEN ss.ThirdPeriodicRating &lt; 75 THEN 'NI'
+	WHEN ss.ThirdPeriodicRating &gt; 74 AND ss.ThirdPeriodicRating &lt; 80 THEN 'MS'
+	WHEN ss.ThirdPeriodicRating &gt; 79 AND ss.ThirdPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.ThirdPeriodicRating &gt; 84 AND ss.ThirdPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.ThirdPeriodicRating &gt; 89 THEN 'O'
+END as "3",
+CASE
+	WHEN ss.FourthPeriodicRating = NULL THEN ' '
+	WHEN ss.FourthPeriodicRating &lt; 75 THEN 'NI'
+	WHEN ss.FourthPeriodicRating &gt; 74 AND ss.FourthPeriodicRating &lt; 80 THEN 'MS'
+	WHEN ss.FourthPeriodicRating &gt; 79 AND ss.FourthPeriodicRating &lt; 85 THEN 'S'
+	WHEN ss.FourthPeriodicRating &gt; 84 AND ss.FourthPeriodicRating &lt; 90 THEN 'VS'
+	WHEN ss.FourthPeriodicRating &gt; 89 THEN 'O'
+END as "4",
+gl.Description as [GradeLev]
+from Students as st
+join StudentEnrollments stE on ste.StudentId = st.StudentId
+join GradeLevels gl on stE.GradeLevel = gl.GradeLevel
+left outer join Traits sb on sb.Category = gl.Category
+left outer join StudentTraits ss on SUBSTRING(ss.StudentSY,1,8) = st.StudentId and ss.TraitsID = sb.TraitsID
+where  st.StudentId = @StudentID
+order by ss.StudentSY asc</value>
+  </data>
+  <metadata name="StudentDetails.ParameterValues" xml:space="preserve">
+    <value>{"@StudentID":"20140001"}</value>
+  </metadata>
+  <data name="StudentDetails.SelectCommand" xml:space="preserve">
+    <value>select (st.LastName + ', ' +  st.FirstName + ' ' + SUBSTRING(st.MiddleName,1,1)) as [StudentName],
+st.Gender as [Sex],
+st.DOB as [Date of Birth],
+st.POBProvince as [Province],
+st.POBTownCity as [City/Town],
+st.POBBarangay as [Barrio],
+st.GuardiansName,
+st.GuardiansOccupation,
+st.HomeAddress + ' ' + st.HomeBarangay + ' ' + st.HomeTownCity + ' ' +st.HomeProvince as [Adress],
+st.LastSYAttendedDCFI,
+st.Average,
+stE.GradeLevel,
+gl.Description as [Level],
+SUBSTRING(stE.StudentSY,9,9) as SY
+from Students as st
+join StudentEnrollments as stE on ste.StudentId = st.StudentId
+join GradeLevels as gl on gl.GradeLevel = stE.GradeLevel
+where st.StudentId = @StudentID
+Order by GradeLevel, SUBSTRING(stE.StudentSY,9,9) asc</value>
+  </data>
+</root>

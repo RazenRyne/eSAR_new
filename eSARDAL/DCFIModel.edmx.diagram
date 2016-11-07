@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d80cb4eb274403ba158f4b0e2517a80" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="DCFIModel.Building" Width="1.5" PointX="1.5" PointY="6.875" />
+        <EntityTypeShape EntityType="DCFIModel.Curriculum" Width="1.5" PointX="17.25" PointY="28" />
+        <EntityTypeShape EntityType="DCFIModel.CurriculumSubject" Width="1.5" PointX="19.5" PointY="24.75" />
+        <EntityTypeShape EntityType="DCFIModel.Fee" Width="1.5" PointX="11.25" PointY="14.125" />
+        <EntityTypeShape EntityType="DCFIModel.GradeLevel" Width="1.5" PointX="3.75" PointY="13.5" />
+        <EntityTypeShape EntityType="DCFIModel.GradeSection" Width="1.5" PointX="6" PointY="19" />
+        <EntityTypeShape EntityType="DCFIModel.LearningArea" Width="1.5" PointX="12" PointY="24.75" />
+        <EntityTypeShape EntityType="DCFIModel.Log" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DCFIModel.Payment" Width="1.5" PointX="11.25" PointY="28.375" />
+        <EntityTypeShape EntityType="DCFIModel.PaymentDetail" Width="1.5" PointX="16.5" PointY="25" />
+        <EntityTypeShape EntityType="DCFIModel.Room" Width="1.5" PointX="3.75" PointY="6.375" />
+        <EntityTypeShape EntityType="DCFIModel.Schedule" Width="1.5" PointX="5.25" PointY="23.875" />
+        <EntityTypeShape EntityType="DCFIModel.ScholarshipDiscount" Width="1.5" PointX="9" PointY="13.75" />
+        <EntityTypeShape EntityType="DCFIModel.SchoolYear" Width="1.5" PointX="3.75" PointY="10.625" />
+        <EntityTypeShape EntityType="DCFIModel.Sibling" Width="1.5" PointX="11.25" PointY="32.75" />
+        <EntityTypeShape EntityType="DCFIModel.StudentAssessment" Width="1.5" PointX="13.5" PointY="19.75" />
+        <EntityTypeShape EntityType="DCFIModel.StudentEnrollment" Width="1.5" PointX="11.25" PointY="18.875" />
+        <EntityTypeShape EntityType="DCFIModel.Student" Width="1.5" PointX="9" PointY="25" />
+        <EntityTypeShape EntityType="DCFIModel.StudentSubject" Width="1.5" PointX="16.5" PointY="18.125" />
+        <EntityTypeShape EntityType="DCFIModel.StudentTrait" Width="1.5" PointX="8.25" PointY="18.125" />
+        <EntityTypeShape EntityType="DCFIModel.SubjectAssignment" Width="1.5" PointX="3" PointY="20.125" />
+        <EntityTypeShape EntityType="DCFIModel.Subject" Width="1.5" PointX="14.25" PointY="24.375" />
+        <EntityTypeShape EntityType="DCFIModel.TeacherChildren" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="DCFIModel.TeacherEducationalBackground" Width="1.5" PointX="3" PointY="35" />
+        <EntityTypeShape EntityType="DCFIModel.TeacherEligibility" Width="1.5" PointX="3" PointY="24.5" />
+        <EntityTypeShape EntityType="DCFIModel.Teacher" Width="1.5" PointX="0.75" PointY="15.625" />
+        <EntityTypeShape EntityType="DCFIModel.Timeslot" Width="1.5" PointX="0.75" PointY="27.625" />
+        <EntityTypeShape EntityType="DCFIModel.TrainingSeminar" Width="1.5" PointX="3" PointY="31.5" />
+        <EntityTypeShape EntityType="DCFIModel.Trait" Width="1.5" PointX="6" PointY="12.375" />
+        <EntityTypeShape EntityType="DCFIModel.User" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DCFIModel.UserType" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="DCFIModel.WorkExperience" Width="1.5" PointX="3" PointY="28" />
+        <AssociationConnector Association="DCFIModel.fk_Room_Build" />
+        <AssociationConnector Association="DCFIModel.fk_CurrSub_Curr" />
+        <AssociationConnector Association="DCFIModel.fk_CurrSub_Sub" />
+        <AssociationConnector Association="DCFIModel.FK__Fees__SY__27C3E46E" />
+        <AssociationConnector Association="DCFIModel.fk_Assess_Fee" />
+        <AssociationConnector Association="DCFIModel.fk_Fee_GradeLevel" />
+        <AssociationConnector Association="DCFIModel.fk_Payment_Fee" />
+        <AssociationConnector Association="DCFIModel.fk_Grade_Section" />
+        <AssociationConnector Association="DCFIModel.fk_Subjects_Grade" />
+        <AssociationConnector Association="DCFIModel.FK__GradeSection__SY__28B808A7" />
+        <AssociationConnector Association="DCFIModel.FK__StudentTr__Grade__1E3A7A34" />
+        <AssociationConnector Association="DCFIModel.fk_RoomsGS" />
+        <AssociationConnector Association="DCFIModel.fk_StudentEnr_Gs" />
+        <AssociationConnector Association="DCFIModel.fkGRadeS_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_Subjects_Learning" />
+        <AssociationConnector Association="DCFIModel.fk_Pay_Student" />
+        <AssociationConnector Association="DCFIModel.fk_Payment_OR" />
+        <AssociationConnector Association="DCFIModel.fk_Rooms" />
+        <AssociationConnector Association="DCFIModel.fk_Sched_StudAss" />
+        <AssociationConnector Association="DCFIModel.fk_Sched_Time" />
+        <AssociationConnector Association="DCFIModel.fkAssesDiscount" />
+        <AssociationConnector Association="DCFIModel.fkEnrolDiscount" />
+        <AssociationConnector Association="DCFIModel.fkStudent_Discount" />
+        <AssociationConnector Association="DCFIModel.FK__StudentEnrol__SY__26CFC035" />
+        <AssociationConnector Association="DCFIModel.fk_StudentSibling" />
+        <AssociationConnector Association="DCFIModel.fk_StudentSibling_Stud" />
+        <AssociationConnector Association="DCFIModel.fk_Assess_StudSY" />
+        <AssociationConnector Association="DCFIModel.FK__StudentSu__Stude__2D7CBDC4" />
+        <AssociationConnector Association="DCFIModel.fk_StudentEnr_Stud" />
+        <AssociationConnector Association="DCFIModel.fk_StudenTrait_StudEnr" />
+        <AssociationConnector Association="DCFIModel.FK__StudentSu__Subje__2E70E1FD" />
+        <AssociationConnector Association="DCFIModel.fk_StudentSub_Trait" />
+        <AssociationConnector Association="DCFIModel.fk_SA_Subject" />
+        <AssociationConnector Association="DCFIModel.fk_SA_Teacher" />
+        <AssociationConnector Association="DCFIModel.fkSA_Timeslot" />
+        <AssociationConnector Association="DCFIModel.fk_TC_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_TEB_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_Elig_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_TS_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_WE_Teacher" />
+        <AssociationConnector Association="DCFIModel.fk_User_Type" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

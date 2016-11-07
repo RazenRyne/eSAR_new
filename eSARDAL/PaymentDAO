@@ -1,0 +1,231 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using eSARBDO;
+
+namespace eSARDAL
+{
+    public class PaymentDAO
+    {
+        public List<PaymentBDO> GetPayment(int orno)
+        {
+            List<Payment> paymentList = new List<Payment>();
+            using (var DCEnt = new DCFIEntities())
+            {
+                paymentList = (from p in DCEnt.Payments
+                               where p.ORNo == orno
+                               select p).ToList<Payment>();
+            }
+
+            List<PaymentBDO> paymentBDOList = new List<PaymentBDO>();
+            foreach (Payment p in paymentList)
+            {
+                PaymentBDO paymentBDO = new PaymentBDO();
+                ConvertPaymentToPaymentBDO(p, paymentBDO);
+                paymentBDOList.Add(paymentBDO);
+            }
+            return paymentBDOList;
+        }
+
+        private void ConvertPaymentToPaymentBDO(Payment p, PaymentBDO payBDO)
+        {
+            payBDO.BusinessStyle = p.BusinessStyle;
+            payBDO.Cancelled = p.Cancelled;
+            payBDO.ORNo = p.ORNo;
+            payBDO.PaidAt = p.PaidAt;
+            payBDO.PaidTo = (int)p.PaidTo;
+            payBDO.ReceivedFrom = p.ReceivedFrom;
+            payBDO.SettlementFor = p.SettlementFor;
+            payBDO.StudentId = p.StudentId;
+            payBDO.TIN = p.TIN;
+        }
+
+        private void ConvertPaymentBDOToPayment(PaymentBDO payBDO, Payment p)
+        {
+            p.BusinessStyle = payBDO.BusinessStyle;
+            p.Cancelled = payBDO.Cancelled;
+            p.ORNo = payBDO.ORNo;
+            p.PaidAt = payBDO.PaidAt;
+            p.PaidTo = (int)payBDO.PaidTo;
+            p.ReceivedFrom = payBDO.ReceivedFrom;
+            p.SettlementFor = payBDO.SettlementFor;
+            p.StudentId = payBDO.StudentId;
+            p.TIN = payBDO.TIN;
+        }
+
+        public List<PaymentBDO> GetAllPayment()
+        {
+            List<Payment> paymentList = new List<Payment>();
+            using (var DCEnt = new DCFIEntities())
+            {
+                paymentList = (from p in DCEnt.Payments
+                               select p).ToList<Payment>();
+            }
+
+            List<PaymentBDO> paymentBDOList = new List<PaymentBDO>();
+            foreach (Payment p in paymentList)
+            {
+                PaymentBDO paymentBDO = new PaymentBDO();
+                ConvertPaymentToPaymentBDO(p, paymentBDO);
+                paymentBDOList.Add(paymentBDO);
+            }
+            return paymentBDOList;
+        }
+
+        public List<PaymentBDO> GetPaymentbyIDBDO(string StudentId)
+        {
+            List<Payment> paymentList = new List<Payment>();
+            using (var DCEnt = new DCFIEntities())
+            {
+                paymentList = (from p in DCEnt.Payments
+                               where p.StudentId == StudentId
+                               select p).ToList<Payment>();
+            }
+
+            List<PaymentBDO> paymentBDOList = new List<PaymentBDO>();
+            foreach (Payment p in paymentList)
+            {
+                PaymentBDO paymentBDO = new PaymentBDO();
+                ConvertPaymentToPaymentBDO(p, paymentBDO);
+                paymentBDOList.Add(paymentBDO);
+            }
+            return paymentBDOList;
+        }
+
+        public Boolean CreatePayment(ref PaymentBDO payment, ref string message)
+        {
+            message = "Payment Added Successfully";
+            bool ret = true;
+            Payment p = new Payment();
+            ConvertPaymentBDOToPayment(payment, p);
+            using (var DCEnt = new DCFIEntities())
+            {
+                DCEnt.Payments.Add(p);
+                DCEnt.SaveChanges();
+            }
+            return ret;
+        }
+
+        public Boolean UpdatePayment(ref PaymentBDO pbdo, ref string message)
+        {
+
+            message = "Payment updated successfully.";
+            List<PaymentDetail> toRemove;
+            List<PaymentDetail> toAdd;
+            Boolean ret = true;
+            Payment p = new Payment();
+            ConvertPaymentBDOToPayment(pbdo, p);
+            Payment pInDB = new Payment();
+
+            using (var DCEnt = new DCFIEntities())
+            {
+                var pCode = p.ORNo;
+                pInDB = (from pay in DCEnt.Payments
+                         where pay.ORNo == pCode
+                         select pay).FirstOrDefault();
+
+                if (pInDB == null)
+                {
+                    throw new Exception("No Payment with ORNo" + p.ORNo);
+                }
+
+                if (pInDB.PaymentDetails.Count == 0)
+                {
+                    foreach (PaymentDetail d in p.PaymentDetails)
+                        pInDB.PaymentDetails.Add(d);
+                }
+                else
+                {
+                    toRemove = new List<PaymentDetail>();
+                    toAdd = new List<PaymentDetail>();
+                    if (pInDB.PaymentDetails.Count < p.PaymentDetails.Count)
+                    {
+                        foreach (PaymentDetail pd in p.PaymentDetails)
+                        {
+                            int po = pInDB.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toAdd.Add(pd);
+                        }
+                        foreach (PaymentDetail pd in pInDB.PaymentDetails)
+                        {
+                            int po = p.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toRemove.Add(pd);
+                        }
+                    }
+                    else if (pInDB.PaymentDetails.Count > p.PaymentDetails.Count)
+                    {
+                        //p1
+                        foreach (PaymentDetail pd in p.PaymentDetails)
+                        {
+                            int po = pInDB.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toAdd.Add(pd);
+                        }
+                        foreach (PaymentDetail pd in pInDB.PaymentDetails)
+                        {
+                            int po = p.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toRemove.Add(pd);
+                        }
+                    }
+                    else if (pInDB.PaymentDetails.Count == p.PaymentDetails.Count)
+                    {
+                        foreach (PaymentDetail pd in p.PaymentDetails)
+                        {
+                            int po = pInDB.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toAdd.Add(pd);
+                        }
+                        foreach (PaymentDetail pd in pInDB.PaymentDetails)
+                        {
+                            int po = p.PaymentDetails.Where(sub => sub.ORNo == pd.ORNo).Count();
+                            if (po == 0)
+                                toRemove.Add(pd);
+                        }
+                    }
+                    foreach (PaymentDetail pd in toAdd)
+                    {
+                        pInDB.PaymentDetails.Add(pd);
+                    }
+                    foreach (PaymentDetail pd in toRemove)
+                    {
+                        DCEnt.PaymentDetails.Remove(pd);
+                        DCEnt.Entry(pd).State = System.Data.Entity.EntityState.Deleted;
+                    }
+                }
+                if (ComparePay(pInDB, p))
+                {
+                    foreach (PaymentDetail pd in pInDB.PaymentDetails)
+                        DCEnt.Entry(pd).State = pd.ORNo == 0 ? System.Data.Entity.EntityState.Added : System.Data.Entity.EntityState.Modified;
+                    DCEnt.SaveChanges();
+                }
+                else
+                {
+                    pInDB.BusinessStyle = p.BusinessStyle;
+                    pInDB.Cancelled = p.Cancelled;
+                    pInDB.ORNo = p.ORNo;
+                    pInDB.PaidAt = p.PaidAt;
+                    pInDB.PaidTo = p.PaidTo;
+                    pInDB.PaymentDetails = p.PaymentDetails;
+                    pInDB.ReceivedFrom = p.ReceivedFrom;
+                    pInDB.SettlementFor = p.SettlementFor;
+                    pInDB.Student = p.Student;
+                    pInDB.StudentId = p.StudentId;
+                    pInDB.TIN = p.TIN;
+                }
+            }
+            return ret;            
+        }
+
+        //Not working
+        private Boolean ComparePay (Payment inDB, Payment inNew)
+        {
+            return true;
+        }
+
+
+    }
+}

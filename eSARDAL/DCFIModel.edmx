@@ -1,0 +1,2918 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DCFIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="BuildingCode" />
+          </Key>
+          <Property Name="BuildingCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="BuildingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curriculums">
+          <Key>
+            <PropertyRef Name="CurriculumCode" />
+          </Key>
+          <Property Name="CurriculumCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrentCurr" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurriculumSubjects">
+          <Key>
+            <PropertyRef Name="CurrSubCode" />
+          </Key>
+          <Property Name="CurrSubCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="SubjectCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CurriculumCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="CurriculumSubjectsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fees">
+          <Key>
+            <PropertyRef Name="FeeID" />
+          </Key>
+          <Property Name="FeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumPay" Type="int" />
+          <Property Name="FeeDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="SYImplemented" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" />
+          <Property Name="DiscountFullPay" Type="float" />
+          <Property Name="SY" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="GradeLevels">
+          <Key>
+            <PropertyRef Name="GradeLevel" />
+          </Key>
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="level" Type="int" />
+          <Property Name="Category" Type="int" />
+        </EntityType>
+        <EntityType Name="GradeSections">
+          <Key>
+            <PropertyRef Name="GradeSectionCode" />
+          </Key>
+          <Property Name="GradeSectionCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Section" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="HomeRoomTeacherId" Type="nvarchar" MaxLength="7" />
+          <Property Name="HomeRoomNumber" Type="int" />
+          <Property Name="Class" Type="int" />
+          <Property Name="SY" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="LearningAreas">
+          <Key>
+            <PropertyRef Name="LearningAreaCode" />
+          </Key>
+          <Property Name="LearningAreaCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Academic" Type="bit" />
+          <Property Name="RatePerUnit" Type="float" />
+          <Property Name="Units" Type="float" />
+          <Property Name="RatePerSubject" Type="float" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLUD" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" Nullable="false" />
+          <Property Name="PassedData" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TableName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ORNo" />
+          </Key>
+          <Property Name="ORNo" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="SettlementFor" Type="nvarchar" MaxLength="15" />
+          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="100" />
+          <Property Name="TIN" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaidAt" Type="nvarchar" MaxLength="50" />
+          <Property Name="BusinessStyle" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaidTo" Type="int" />
+          <Property Name="Cancelled" Type="bit" Nullable="false" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="DetailNumber" />
+          </Key>
+          <Property Name="DetailNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORNo" Type="int" />
+          <Property Name="FeeID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="RoomNumber" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="BuildingCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Schedule" />
+          </Key>
+          <Property Name="Schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentAssignmentID" Type="int" />
+          <Property Name="TimeslotCode" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="ScholarshipDiscounts">
+          <Key>
+            <PropertyRef Name="ScholarshipDiscountId" />
+          </Key>
+          <Property Name="ScholarshipDiscountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="Scholarship" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Discount" Type="float" />
+        </EntityType>
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="SY" />
+          </Key>
+          <Property Name="SY" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CurrentSY" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Siblings">
+          <Key>
+            <PropertyRef Name="SiblingId" />
+          </Key>
+          <Property Name="SiblingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="SiblingStudentId" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAssessment">
+          <Key>
+            <PropertyRef Name="StudentAssessmentId" />
+          </Key>
+          <Property Name="StudentAssessmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentSY" Type="nvarchar" MaxLength="20" />
+          <Property Name="FeeID" Type="int" />
+          <Property Name="DiscountId" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentEnrollments">
+          <Key>
+            <PropertyRef Name="StudentSY" />
+          </Key>
+          <Property Name="StudentSY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StudentId" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="GradeSectionCode" Type="int" />
+          <Property Name="Dismissed" Type="bit" />
+          <Property Name="StudentEnrollmentsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountId" Type="int" />
+          <Property Name="Stat" Type="char" MaxLength="1" />
+          <Property Name="SY" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="POBAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBBarangay" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBTownCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeBarangay" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeTownCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolLastAttended" Type="nvarchar" MaxLength="50" />
+          <Property Name="FathersName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FathersOccupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="FathersAverageYearlyIncome" Type="float" />
+          <Property Name="FathersEducation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MothersMaidenName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MothersOccupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MothersAverageYearlyIncome" Type="float" />
+          <Property Name="MothersEducation" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuardiansName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GuardiansOccupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuardiansAverageYearlyIncome" Type="float" />
+          <Property Name="MadrasahEnrolled" Type="bit" />
+          <Property Name="DateAdmitted" Type="date" />
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" />
+          <Property Name="Average" Type="float" />
+          <Property Name="Card" Type="bit" />
+          <Property Name="GoodMoral" Type="bit" />
+          <Property Name="BirthCertificate" Type="bit" />
+          <Property Name="LastSYAttendedDCFI" Type="nvarchar" MaxLength="9" />
+          <Property Name="Dismissed" Type="bit" Nullable="false" />
+          <Property Name="Graduated" Type="bit" Nullable="false" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="ScholarshipDiscountId" Type="int" />
+          <Property Name="UnitsFailedLastYear" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ranking" Type="int" />
+          <Property Name="RunningBalance" Type="float" />
+          <Property Name="Section" Type="nvarchar" MaxLength="20" />
+          <Property Name="StudentLRN" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstAverage" Type="float" />
+          <Property Name="SecondAverage" Type="float" />
+          <Property Name="ThirdAverage" Type="float" />
+          <Property Name="GradeBeforeDC" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="StudentSubjects">
+          <Key>
+            <PropertyRef Name="StudentSubjectsID" />
+          </Key>
+          <Property Name="StudentEnrSubCode" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="StudentSY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubjectCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FirstPeriodicRating" Type="float" />
+          <Property Name="SecondPeriodicRating" Type="float" />
+          <Property Name="ThirdPeriodicRating" Type="float" />
+          <Property Name="FourthPeriodicRating" Type="float" />
+          <Property Name="StudentSubjectsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LockFirst" Type="bit" />
+          <Property Name="LockSecond" Type="bit" />
+          <Property Name="LockThird" Type="bit" />
+          <Property Name="LockFourth" Type="bit" />
+          <Property Name="FirstEntered" Type="datetime" />
+          <Property Name="SecondEntered" Type="datetime" />
+          <Property Name="ThirdEntered" Type="datetime" />
+          <Property Name="FourthEntered" Type="datetime" />
+          <Property Name="FourthLocked" Type="datetime" />
+          <Property Name="ThirdLocked" Type="datetime" />
+          <Property Name="SecondLocked" Type="datetime" />
+          <Property Name="FirstLocked" Type="datetime" />
+          <Property Name="SubjectAssignments" Type="nvarchar(max)" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StudentTraits">
+          <Key>
+            <PropertyRef Name="StudentEnrTraitCode" />
+          </Key>
+          <Property Name="StudentEnrTraitCode" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="TraitsID" Type="int" Nullable="false" />
+          <Property Name="StudentSY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FirstPeriodicRating" Type="float" />
+          <Property Name="SecondPeriodicRating" Type="float" />
+          <Property Name="ThirdPeriodicRating" Type="float" />
+          <Property Name="FourthPeriodicRating" Type="float" />
+          <Property Name="LockFirst" Type="bit" />
+          <Property Name="LockSecond" Type="bit" />
+          <Property Name="LockThird" Type="bit" />
+          <Property Name="LockCFourth" Type="bit" />
+          <Property Name="FirstEntered" Type="datetime" />
+          <Property Name="FirstLocked" Type="datetime" />
+          <Property Name="SecondLocked" Type="datetime" />
+          <Property Name="SecondEntered" Type="datetime" />
+          <Property Name="ThirdEntered" Type="datetime" />
+          <Property Name="ThirdLocked" Type="datetime" />
+          <Property Name="FourthLocked" Type="datetime" />
+          <Property Name="FourthEntered" Type="datetime" />
+          <Property Name="GradeSectionCode" Type="int" />
+        </EntityType>
+        <EntityType Name="SubjectAssignments">
+          <Key>
+            <PropertyRef Name="SubjectAssignmentsID" />
+          </Key>
+          <Property Name="SubjectAssignmentsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SY" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="SubjectCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" />
+          <Property Name="Deactivated" Type="bit" />
+          <Property Name="GradeSectionCode" Type="int" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="TimeSlotCode" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="SubjectCode" />
+          </Key>
+          <Property Name="SubjectCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="LearningAreaCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="GradeLevel" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MPW" Type="int" />
+        </EntityType>
+        <EntityType Name="TeacherChildren">
+          <Key>
+            <PropertyRef Name="ChildId" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="ChildId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+        </EntityType>
+        <EntityType Name="TeacherEducationalBackground">
+          <Key>
+            <PropertyRef Name="TEBId" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="TEBId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducLevel" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NameOfSchool" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEBYearFrom" Type="date" />
+          <Property Name="TEBYearTo" Type="date" />
+          <Property Name="Course" Type="nvarchar" MaxLength="50" />
+          <Property Name="HonorsReceived" Type="nvarchar" MaxLength="20" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherEligibilities">
+          <Key>
+            <PropertyRef Name="EligibilityId" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="EligibilityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eligibility" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="5" />
+          <Property Name="DateOfExam" Type="date" />
+          <Property Name="PlaceOfExam" Type="nvarchar" MaxLength="40" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IssueDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="TIN" Type="nvarchar" MaxLength="11" />
+          <Property Name="DateOfAppointment" Type="date" />
+          <Property Name="EmploymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBMunicipality" Type="nvarchar" MaxLength="50" />
+          <Property Name="CivilStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="HeightCm" Type="int" />
+          <Property Name="WeightKg" Type="float" />
+          <Property Name="BloodType" Type="nvarchar" MaxLength="3" />
+          <Property Name="SSSNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="PagIBIGNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhilHealthNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="RAStreetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RARegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="RAProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="RAMunicipality" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResTelephoneNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="PAStreetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PARegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="PAProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="PAMunicipality" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="30" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="11" />
+          <Property Name="PreviousSchool" Type="nvarchar" MaxLength="50" />
+          <Property Name="DialectSpoken" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseMiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseOccupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseBusinessAdd" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseEmployerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpouseTelephoneNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="PERAA" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Academic" Type="bit" />
+          <Property Name="Salary" Type="float" />
+          <Property Name="Department" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Timeslots">
+          <Key>
+            <PropertyRef Name="TimeSlotCode" />
+          </Key>
+          <Property Name="TimeSlotCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="TimeStart" Type="nvarchar" MaxLength="20" />
+          <Property Name="TimeEnd" Type="nvarchar" MaxLength="20" />
+          <Property Name="Days" Type="nvarchar" MaxLength="21" />
+          <Property Name="TotalMins" Type="int" />
+        </EntityType>
+        <EntityType Name="TrainingSeminars">
+          <Key>
+            <PropertyRef Name="TSID" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="TSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaOfTraining" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateFrom" Type="date" />
+          <Property Name="DateTo" Type="date" />
+          <Property Name="NoOfHours" Type="float" />
+          <Property Name="ConductedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Traits">
+          <Key>
+            <PropertyRef Name="TraitsID" />
+          </Key>
+          <Property Name="CurrTrait" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="TraitsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserTypeCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeCode" />
+          </Key>
+          <Property Name="UserTypeCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WorkExperiences">
+          <Key>
+            <PropertyRef Name="WEId" />
+          </Key>
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="WEId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkExpFrom" Type="date" />
+          <Property Name="WorkExpTo" Type="date" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="20" />
+          <Property Name="MonthlySalary" Type="float" />
+          <Property Name="StatusOfEmployment" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Fees__SY__27C3E46E">
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="0..1" />
+          <End Role="Fees" Type="Self.Fees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="Fees">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GradeSection__SY__28B808A7">
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="0..1" />
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="GradeSections">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEnrol__SY__26CFC035">
+          <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="0..1" />
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="StudentEnrollments">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Stude__2D7CBDC4">
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="1" />
+          <End Role="StudentSubjects" Type="Self.StudentSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollments">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentSubjects">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Subje__2E70E1FD">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="StudentSubjects" Type="Self.StudentSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="StudentSubjects">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentTr__Grade__1E3A7A34">
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="0..1" />
+          <End Role="StudentTraits" Type="Self.StudentTraits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeSections">
+              <PropertyRef Name="GradeSectionCode" />
+            </Principal>
+            <Dependent Role="StudentTraits">
+              <PropertyRef Name="GradeSectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assess_Fee">
+          <End Role="Fees" Type="Self.Fees" Multiplicity="0..1" />
+          <End Role="StudentAssessment" Type="Self.StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fees">
+              <PropertyRef Name="FeeID" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="FeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assess_StudSY">
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="0..1" />
+          <End Role="StudentAssessment" Type="Self.StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollments">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CurrSub_Curr">
+          <End Role="Curriculums" Type="Self.Curriculums" Multiplicity="1" />
+          <End Role="CurriculumSubjects" Type="Self.CurriculumSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curriculums">
+              <PropertyRef Name="CurriculumCode" />
+            </Principal>
+            <Dependent Role="CurriculumSubjects">
+              <PropertyRef Name="CurriculumCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CurrSub_Sub">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="CurriculumSubjects" Type="Self.CurriculumSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="CurriculumSubjects">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Elig_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="TeacherEligibilities" Type="Self.TeacherEligibilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherEligibilities">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Fee_GradeLevel">
+          <End Role="GradeLevels" Type="Self.GradeLevels" Multiplicity="0..1" />
+          <End Role="Fees" Type="Self.Fees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevels">
+              <PropertyRef Name="GradeLevel" />
+            </Principal>
+            <Dependent Role="Fees">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Grade_Section">
+          <End Role="GradeLevels" Type="Self.GradeLevels" Multiplicity="1" />
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevels">
+              <PropertyRef Name="GradeLevel" />
+            </Principal>
+            <Dependent Role="GradeSections">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pay_Student">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Payment_Fee">
+          <End Role="Fees" Type="Self.Fees" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fees">
+              <PropertyRef Name="FeeID" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="FeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Payment_OR">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="ORNo" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="ORNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Room_Build">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingCode" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="BuildingCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="SubjectAssignments" Type="Self.SubjectAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="SubjectAssignments">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoomsGS">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="GradeSections">
+              <PropertyRef Name="HomeRoomNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SA_Subject">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="SubjectAssignments" Type="Self.SubjectAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="SubjectAssignments">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SA_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <End Role="SubjectAssignments" Type="Self.SubjectAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="SubjectAssignments">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sched_StudAss">
+          <End Role="SubjectAssignments" Type="Self.SubjectAssignments" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectAssignments">
+              <PropertyRef Name="SubjectAssignmentsID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="StudentAssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sched_Time">
+          <End Role="Timeslots" Type="Self.Timeslots" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timeslots">
+              <PropertyRef Name="TimeSlotCode" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TimeslotCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentEnr_Gs">
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="0..1" />
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeSections">
+              <PropertyRef Name="GradeSectionCode" />
+            </Principal>
+            <Dependent Role="StudentEnrollments">
+              <PropertyRef Name="GradeSectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentEnr_Stud">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudenTrait_StudEnr">
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="1" />
+          <End Role="StudentTraits" Type="Self.StudentTraits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollments">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentTraits">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSibling">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Siblings" Type="Self.Siblings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Siblings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSibling_Stud">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Siblings" Type="Self.Siblings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Siblings">
+              <PropertyRef Name="SiblingStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSub_Trait">
+          <End Role="Traits" Type="Self.Traits" Multiplicity="1" />
+          <End Role="StudentTraits" Type="Self.StudentTraits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Traits">
+              <PropertyRef Name="TraitsID" />
+            </Principal>
+            <Dependent Role="StudentTraits">
+              <PropertyRef Name="TraitsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Subjects_Grade">
+          <End Role="GradeLevels" Type="Self.GradeLevels" Multiplicity="1" />
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevels">
+              <PropertyRef Name="GradeLevel" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Subjects_Learning">
+          <End Role="LearningAreas" Type="Self.LearningAreas" Multiplicity="1" />
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningAreas">
+              <PropertyRef Name="LearningAreaCode" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="LearningAreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TC_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="TeacherChildren" Type="Self.TeacherChildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherChildren">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TEB_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="TeacherEducationalBackground" Type="Self.TeacherEducationalBackground" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherEducationalBackground">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TS_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="TrainingSeminars" Type="Self.TrainingSeminars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TrainingSeminars">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_User_Type">
+          <End Role="UserTypes" Type="Self.UserTypes" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypes">
+              <PropertyRef Name="UserTypeCode" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_WE_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="WorkExperiences" Type="Self.WorkExperiences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="WorkExperiences">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkAssesDiscount">
+          <End Role="ScholarshipDiscounts" Type="Self.ScholarshipDiscounts" Multiplicity="0..1" />
+          <End Role="StudentAssessment" Type="Self.StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscounts">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="DiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEnrolDiscount">
+          <End Role="ScholarshipDiscounts" Type="Self.ScholarshipDiscounts" Multiplicity="0..1" />
+          <End Role="StudentEnrollments" Type="Self.StudentEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscounts">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="StudentEnrollments">
+              <PropertyRef Name="DiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkGRadeS_Teacher">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <End Role="GradeSections" Type="Self.GradeSections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="GradeSections">
+              <PropertyRef Name="HomeRoomTeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSA_Timeslot">
+          <End Role="Timeslots" Type="Self.Timeslots" Multiplicity="0..1" />
+          <End Role="SubjectAssignments" Type="Self.SubjectAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timeslots">
+              <PropertyRef Name="TimeSlotCode" />
+            </Principal>
+            <Dependent Role="SubjectAssignments">
+              <PropertyRef Name="TimeSlotCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStudent_Discount">
+          <End Role="ScholarshipDiscounts" Type="Self.ScholarshipDiscounts" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscounts">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DCFIModelStoreContainer">
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curriculums" EntityType="Self.Curriculums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurriculumSubjects" EntityType="Self.CurriculumSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fees" EntityType="Self.Fees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeLevels" EntityType="Self.GradeLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeSections" EntityType="Self.GradeSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningAreas" EntityType="Self.LearningAreas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScholarshipDiscounts" EntityType="Self.ScholarshipDiscounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SchoolYear" EntityType="Self.SchoolYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siblings" EntityType="Self.Siblings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAssessment" EntityType="Self.StudentAssessment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEnrollments" EntityType="Self.StudentEnrollments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSubjects" EntityType="Self.StudentSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentTraits" EntityType="Self.StudentTraits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectAssignments" EntityType="Self.SubjectAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherChildren" EntityType="Self.TeacherChildren" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherEducationalBackground" EntityType="Self.TeacherEducationalBackground" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherEligibilities" EntityType="Self.TeacherEligibilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timeslots" EntityType="Self.Timeslots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingSeminars" EntityType="Self.TrainingSeminars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Traits" EntityType="Self.Traits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkExperiences" EntityType="Self.WorkExperiences" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Fees__SY__27C3E46E" Association="Self.FK__Fees__SY__27C3E46E">
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+            <End Role="Fees" EntitySet="Fees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GradeSection__SY__28B808A7" Association="Self.FK__GradeSection__SY__28B808A7">
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+            <End Role="GradeSections" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEnrol__SY__26CFC035" Association="Self.FK__StudentEnrol__SY__26CFC035">
+            <End Role="SchoolYear" EntitySet="SchoolYear" />
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Stude__2D7CBDC4" Association="Self.FK__StudentSu__Stude__2D7CBDC4">
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+            <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Subje__2E70E1FD" Association="Self.FK__StudentSu__Subje__2E70E1FD">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentTr__Grade__1E3A7A34" Association="Self.FK__StudentTr__Grade__1E3A7A34">
+            <End Role="GradeSections" EntitySet="GradeSections" />
+            <End Role="StudentTraits" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assess_Fee" Association="Self.fk_Assess_Fee">
+            <End Role="Fees" EntitySet="Fees" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assess_StudSY" Association="Self.fk_Assess_StudSY">
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CurrSub_Curr" Association="Self.fk_CurrSub_Curr">
+            <End Role="Curriculums" EntitySet="Curriculums" />
+            <End Role="CurriculumSubjects" EntitySet="CurriculumSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CurrSub_Sub" Association="Self.fk_CurrSub_Sub">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="CurriculumSubjects" EntitySet="CurriculumSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Elig_Teacher" Association="Self.fk_Elig_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherEligibilities" EntitySet="TeacherEligibilities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Fee_GradeLevel" Association="Self.fk_Fee_GradeLevel">
+            <End Role="GradeLevels" EntitySet="GradeLevels" />
+            <End Role="Fees" EntitySet="Fees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Grade_Section" Association="Self.fk_Grade_Section">
+            <End Role="GradeLevels" EntitySet="GradeLevels" />
+            <End Role="GradeSections" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pay_Student" Association="Self.fk_Pay_Student">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Payment_Fee" Association="Self.fk_Payment_Fee">
+            <End Role="Fees" EntitySet="Fees" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Payment_OR" Association="Self.fk_Payment_OR">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Room_Build" Association="Self.fk_Room_Build">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rooms" Association="Self.fk_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="SubjectAssignments" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoomsGS" Association="Self.fk_RoomsGS">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="GradeSections" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SA_Subject" Association="Self.fk_SA_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="SubjectAssignments" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SA_Teacher" Association="Self.fk_SA_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="SubjectAssignments" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sched_StudAss" Association="Self.fk_Sched_StudAss">
+            <End Role="SubjectAssignments" EntitySet="SubjectAssignments" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sched_Time" Association="Self.fk_Sched_Time">
+            <End Role="Timeslots" EntitySet="Timeslots" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentEnr_Gs" Association="Self.fk_StudentEnr_Gs">
+            <End Role="GradeSections" EntitySet="GradeSections" />
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentEnr_Stud" Association="Self.fk_StudentEnr_Stud">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudenTrait_StudEnr" Association="Self.fk_StudenTrait_StudEnr">
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+            <End Role="StudentTraits" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSibling" Association="Self.fk_StudentSibling">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Siblings" EntitySet="Siblings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSibling_Stud" Association="Self.fk_StudentSibling_Stud">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Siblings" EntitySet="Siblings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSub_Trait" Association="Self.fk_StudentSub_Trait">
+            <End Role="Traits" EntitySet="Traits" />
+            <End Role="StudentTraits" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Subjects_Grade" Association="Self.fk_Subjects_Grade">
+            <End Role="GradeLevels" EntitySet="GradeLevels" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Subjects_Learning" Association="Self.fk_Subjects_Learning">
+            <End Role="LearningAreas" EntitySet="LearningAreas" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TC_Teacher" Association="Self.fk_TC_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherChildren" EntitySet="TeacherChildren" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TEB_Teacher" Association="Self.fk_TEB_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherEducationalBackground" EntitySet="TeacherEducationalBackground" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TS_Teacher" Association="Self.fk_TS_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TrainingSeminars" EntitySet="TrainingSeminars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_User_Type" Association="Self.fk_User_Type">
+            <End Role="UserTypes" EntitySet="UserTypes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_WE_Teacher" Association="Self.fk_WE_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="WorkExperiences" EntitySet="WorkExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="fkAssesDiscount" Association="Self.fkAssesDiscount">
+            <End Role="ScholarshipDiscounts" EntitySet="ScholarshipDiscounts" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessment" />
+          </AssociationSet>
+          <AssociationSet Name="fkEnrolDiscount" Association="Self.fkEnrolDiscount">
+            <End Role="ScholarshipDiscounts" EntitySet="ScholarshipDiscounts" />
+            <End Role="StudentEnrollments" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fkGRadeS_Teacher" Association="Self.fkGRadeS_Teacher">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="GradeSections" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fkSA_Timeslot" Association="Self.fkSA_Timeslot">
+            <End Role="Timeslots" EntitySet="Timeslots" />
+            <End Role="SubjectAssignments" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fkStudent_Discount" Association="Self.fkStudent_Discount">
+            <End Role="ScholarshipDiscounts" EntitySet="ScholarshipDiscounts" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DCFIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DCFIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buildings" EntityType="DCFIModel.Building" />
+          <EntitySet Name="Curriculums" EntityType="DCFIModel.Curriculum" />
+          <EntitySet Name="CurriculumSubjects" EntityType="DCFIModel.CurriculumSubject" />
+          <EntitySet Name="Fees" EntityType="DCFIModel.Fee" />
+          <EntitySet Name="GradeLevels" EntityType="DCFIModel.GradeLevel" />
+          <EntitySet Name="GradeSections" EntityType="DCFIModel.GradeSection" />
+          <EntitySet Name="LearningAreas" EntityType="DCFIModel.LearningArea" />
+          <EntitySet Name="Logs" EntityType="DCFIModel.Log" />
+          <EntitySet Name="Payments" EntityType="DCFIModel.Payment" />
+          <EntitySet Name="PaymentDetails" EntityType="DCFIModel.PaymentDetail" />
+          <EntitySet Name="Rooms" EntityType="DCFIModel.Room" />
+          <EntitySet Name="Schedules" EntityType="DCFIModel.Schedule" />
+          <EntitySet Name="ScholarshipDiscounts" EntityType="DCFIModel.ScholarshipDiscount" />
+          <EntitySet Name="SchoolYears" EntityType="DCFIModel.SchoolYear" />
+          <EntitySet Name="Siblings" EntityType="DCFIModel.Sibling" />
+          <EntitySet Name="StudentAssessments" EntityType="DCFIModel.StudentAssessment" />
+          <EntitySet Name="StudentEnrollments" EntityType="DCFIModel.StudentEnrollment" />
+          <EntitySet Name="Students" EntityType="DCFIModel.Student" />
+          <EntitySet Name="StudentSubjects" EntityType="DCFIModel.StudentSubject" />
+          <EntitySet Name="StudentTraits" EntityType="DCFIModel.StudentTrait" />
+          <EntitySet Name="SubjectAssignments" EntityType="DCFIModel.SubjectAssignment" />
+          <EntitySet Name="Subjects" EntityType="DCFIModel.Subject" />
+          <EntitySet Name="TeacherChildrens" EntityType="DCFIModel.TeacherChildren" />
+          <EntitySet Name="TeacherEducationalBackgrounds" EntityType="DCFIModel.TeacherEducationalBackground" />
+          <EntitySet Name="TeacherEligibilities" EntityType="DCFIModel.TeacherEligibility" />
+          <EntitySet Name="Teachers" EntityType="DCFIModel.Teacher" />
+          <EntitySet Name="Timeslots" EntityType="DCFIModel.Timeslot" />
+          <EntitySet Name="TrainingSeminars" EntityType="DCFIModel.TrainingSeminar" />
+          <EntitySet Name="Traits" EntityType="DCFIModel.Trait" />
+          <EntitySet Name="Users" EntityType="DCFIModel.User" />
+          <EntitySet Name="UserTypes" EntityType="DCFIModel.UserType" />
+          <EntitySet Name="WorkExperiences" EntityType="DCFIModel.WorkExperience" />
+          <AssociationSet Name="fk_Room_Build" Association="DCFIModel.fk_Room_Build">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CurrSub_Curr" Association="DCFIModel.fk_CurrSub_Curr">
+            <End Role="Curriculum" EntitySet="Curriculums" />
+            <End Role="CurriculumSubject" EntitySet="CurriculumSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CurrSub_Sub" Association="DCFIModel.fk_CurrSub_Sub">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="CurriculumSubject" EntitySet="CurriculumSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fees__SY__27C3E46E" Association="DCFIModel.FK__Fees__SY__27C3E46E">
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+            <End Role="Fee" EntitySet="Fees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assess_Fee" Association="DCFIModel.fk_Assess_Fee">
+            <End Role="Fee" EntitySet="Fees" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Fee_GradeLevel" Association="DCFIModel.fk_Fee_GradeLevel">
+            <End Role="GradeLevel" EntitySet="GradeLevels" />
+            <End Role="Fee" EntitySet="Fees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Payment_Fee" Association="DCFIModel.fk_Payment_Fee">
+            <End Role="Fee" EntitySet="Fees" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Grade_Section" Association="DCFIModel.fk_Grade_Section">
+            <End Role="GradeLevel" EntitySet="GradeLevels" />
+            <End Role="GradeSection" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Subjects_Grade" Association="DCFIModel.fk_Subjects_Grade">
+            <End Role="GradeLevel" EntitySet="GradeLevels" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GradeSection__SY__28B808A7" Association="DCFIModel.FK__GradeSection__SY__28B808A7">
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+            <End Role="GradeSection" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentTr__Grade__1E3A7A34" Association="DCFIModel.FK__StudentTr__Grade__1E3A7A34">
+            <End Role="GradeSection" EntitySet="GradeSections" />
+            <End Role="StudentTrait" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoomsGS" Association="DCFIModel.fk_RoomsGS">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="GradeSection" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentEnr_Gs" Association="DCFIModel.fk_StudentEnr_Gs">
+            <End Role="GradeSection" EntitySet="GradeSections" />
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fkGRadeS_Teacher" Association="DCFIModel.fkGRadeS_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="GradeSection" EntitySet="GradeSections" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Subjects_Learning" Association="DCFIModel.fk_Subjects_Learning">
+            <End Role="LearningArea" EntitySet="LearningAreas" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pay_Student" Association="DCFIModel.fk_Pay_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Payment_OR" Association="DCFIModel.fk_Payment_OR">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rooms" Association="DCFIModel.fk_Rooms">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="SubjectAssignment" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sched_StudAss" Association="DCFIModel.fk_Sched_StudAss">
+            <End Role="SubjectAssignment" EntitySet="SubjectAssignments" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sched_Time" Association="DCFIModel.fk_Sched_Time">
+            <End Role="Timeslot" EntitySet="Timeslots" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="fkAssesDiscount" Association="DCFIModel.fkAssesDiscount">
+            <End Role="ScholarshipDiscount" EntitySet="ScholarshipDiscounts" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessments" />
+          </AssociationSet>
+          <AssociationSet Name="fkEnrolDiscount" Association="DCFIModel.fkEnrolDiscount">
+            <End Role="ScholarshipDiscount" EntitySet="ScholarshipDiscounts" />
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fkStudent_Discount" Association="DCFIModel.fkStudent_Discount">
+            <End Role="ScholarshipDiscount" EntitySet="ScholarshipDiscounts" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEnrol__SY__26CFC035" Association="DCFIModel.FK__StudentEnrol__SY__26CFC035">
+            <End Role="SchoolYear" EntitySet="SchoolYears" />
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSibling" Association="DCFIModel.fk_StudentSibling">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Sibling" EntitySet="Siblings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSibling_Stud" Association="DCFIModel.fk_StudentSibling_Stud">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Sibling" EntitySet="Siblings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Assess_StudSY" Association="DCFIModel.fk_Assess_StudSY">
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+            <End Role="StudentAssessment" EntitySet="StudentAssessments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Stude__2D7CBDC4" Association="DCFIModel.FK__StudentSu__Stude__2D7CBDC4">
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+            <End Role="StudentSubject" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentEnr_Stud" Association="DCFIModel.fk_StudentEnr_Stud">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudenTrait_StudEnr" Association="DCFIModel.fk_StudenTrait_StudEnr">
+            <End Role="StudentEnrollment" EntitySet="StudentEnrollments" />
+            <End Role="StudentTrait" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Subje__2E70E1FD" Association="DCFIModel.FK__StudentSu__Subje__2E70E1FD">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="StudentSubject" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentSub_Trait" Association="DCFIModel.fk_StudentSub_Trait">
+            <End Role="Trait" EntitySet="Traits" />
+            <End Role="StudentTrait" EntitySet="StudentTraits" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SA_Subject" Association="DCFIModel.fk_SA_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="SubjectAssignment" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SA_Teacher" Association="DCFIModel.fk_SA_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="SubjectAssignment" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fkSA_Timeslot" Association="DCFIModel.fkSA_Timeslot">
+            <End Role="Timeslot" EntitySet="Timeslots" />
+            <End Role="SubjectAssignment" EntitySet="SubjectAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TC_Teacher" Association="DCFIModel.fk_TC_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherChildren" EntitySet="TeacherChildrens" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TEB_Teacher" Association="DCFIModel.fk_TEB_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherEducationalBackground" EntitySet="TeacherEducationalBackgrounds" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Elig_Teacher" Association="DCFIModel.fk_Elig_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherEligibility" EntitySet="TeacherEligibilities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TS_Teacher" Association="DCFIModel.fk_TS_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TrainingSeminar" EntitySet="TrainingSeminars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_WE_Teacher" Association="DCFIModel.fk_WE_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="WorkExperience" EntitySet="WorkExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="fk_User_Type" Association="DCFIModel.fk_User_Type">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingCode" />
+          </Key>
+          <Property Name="BuildingCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rooms" Relationship="DCFIModel.fk_Room_Build" FromRole="Building" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Curriculum">
+          <Key>
+            <PropertyRef Name="CurriculumCode" />
+          </Key>
+          <Property Name="CurriculumCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentCurr" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CurriculumSubjects" Relationship="DCFIModel.fk_CurrSub_Curr" FromRole="Curriculum" ToRole="CurriculumSubject" />
+        </EntityType>
+        <EntityType Name="CurriculumSubject">
+          <Key>
+            <PropertyRef Name="CurrSubCode" />
+          </Key>
+          <Property Name="CurrSubCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurriculumCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="CurriculumSubjectsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Curriculum" Relationship="DCFIModel.fk_CurrSub_Curr" FromRole="CurriculumSubject" ToRole="Curriculum" />
+          <NavigationProperty Name="Subject" Relationship="DCFIModel.fk_CurrSub_Sub" FromRole="CurriculumSubject" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Fee">
+          <Key>
+            <PropertyRef Name="FeeID" />
+          </Key>
+          <Property Name="FeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumPay" Type="Int32" />
+          <Property Name="FeeDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="SYImplemented" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="GradeLevel" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountFullPay" Type="Double" />
+          <Property Name="SY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SchoolYear" Relationship="DCFIModel.FK__Fees__SY__27C3E46E" FromRole="Fee" ToRole="SchoolYear" />
+          <NavigationProperty Name="StudentAssessments" Relationship="DCFIModel.fk_Assess_Fee" FromRole="Fee" ToRole="StudentAssessment" />
+          <NavigationProperty Name="GradeLevel1" Relationship="DCFIModel.fk_Fee_GradeLevel" FromRole="Fee" ToRole="GradeLevel" />
+          <NavigationProperty Name="PaymentDetails" Relationship="DCFIModel.fk_Payment_Fee" FromRole="Fee" ToRole="PaymentDetail" />
+        </EntityType>
+        <EntityType Name="GradeLevel">
+          <Key>
+            <PropertyRef Name="GradeLevel1" />
+          </Key>
+          <Property Name="GradeLevel1" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="level" Type="Int32" />
+          <Property Name="Category" Type="Int32" />
+          <NavigationProperty Name="Fees" Relationship="DCFIModel.fk_Fee_GradeLevel" FromRole="GradeLevel" ToRole="Fee" />
+          <NavigationProperty Name="GradeSections" Relationship="DCFIModel.fk_Grade_Section" FromRole="GradeLevel" ToRole="GradeSection" />
+          <NavigationProperty Name="Subjects" Relationship="DCFIModel.fk_Subjects_Grade" FromRole="GradeLevel" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="GradeSection">
+          <Key>
+            <PropertyRef Name="GradeSectionCode" />
+          </Key>
+          <Property Name="GradeSectionCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeLevel" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Section" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="HomeRoomTeacherId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="HomeRoomNumber" Type="Int32" />
+          <Property Name="Class" Type="Int32" />
+          <Property Name="SY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GradeLevel1" Relationship="DCFIModel.fk_Grade_Section" FromRole="GradeSection" ToRole="GradeLevel" />
+          <NavigationProperty Name="SchoolYear" Relationship="DCFIModel.FK__GradeSection__SY__28B808A7" FromRole="GradeSection" ToRole="SchoolYear" />
+          <NavigationProperty Name="StudentTraits" Relationship="DCFIModel.FK__StudentTr__Grade__1E3A7A34" FromRole="GradeSection" ToRole="StudentTrait" />
+          <NavigationProperty Name="Room" Relationship="DCFIModel.fk_RoomsGS" FromRole="GradeSection" ToRole="Room" />
+          <NavigationProperty Name="StudentEnrollments" Relationship="DCFIModel.fk_StudentEnr_Gs" FromRole="GradeSection" ToRole="StudentEnrollment" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fkGRadeS_Teacher" FromRole="GradeSection" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="LearningArea">
+          <Key>
+            <PropertyRef Name="LearningAreaCode" />
+          </Key>
+          <Property Name="LearningAreaCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Academic" Type="Boolean" />
+          <Property Name="RatePerUnit" Type="Double" />
+          <Property Name="Units" Type="Double" />
+          <Property Name="RatePerSubject" Type="Double" />
+          <NavigationProperty Name="Subjects" Relationship="DCFIModel.fk_Subjects_Learning" FromRole="LearningArea" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLUD" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PassedData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ORNo" />
+          </Key>
+          <Property Name="ORNo" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SettlementFor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TIN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaidAt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaidTo" Type="Int32" />
+          <Property Name="Cancelled" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Student" Relationship="DCFIModel.fk_Pay_Student" FromRole="Payment" ToRole="Student" />
+          <NavigationProperty Name="PaymentDetails" Relationship="DCFIModel.fk_Payment_OR" FromRole="Payment" ToRole="PaymentDetail" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="DetailNumber" />
+          </Key>
+          <Property Name="DetailNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORNo" Type="Int32" />
+          <Property Name="FeeID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Fee" Relationship="DCFIModel.fk_Payment_Fee" FromRole="PaymentDetail" ToRole="Fee" />
+          <NavigationProperty Name="Payment" Relationship="DCFIModel.fk_Payment_OR" FromRole="PaymentDetail" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RoomNumber" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Building" Relationship="DCFIModel.fk_Room_Build" FromRole="Room" ToRole="Building" />
+          <NavigationProperty Name="GradeSections" Relationship="DCFIModel.fk_RoomsGS" FromRole="Room" ToRole="GradeSection" />
+          <NavigationProperty Name="SubjectAssignments" Relationship="DCFIModel.fk_Rooms" FromRole="Room" ToRole="SubjectAssignment" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Schedule1" />
+          </Key>
+          <Property Name="Schedule1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentAssignmentID" Type="Int32" />
+          <Property Name="TimeslotCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SubjectAssignment" Relationship="DCFIModel.fk_Sched_StudAss" FromRole="Schedule" ToRole="SubjectAssignment" />
+          <NavigationProperty Name="Timeslot" Relationship="DCFIModel.fk_Sched_Time" FromRole="Schedule" ToRole="Timeslot" />
+        </EntityType>
+        <EntityType Name="ScholarshipDiscount">
+          <Key>
+            <PropertyRef Name="ScholarshipDiscountId" />
+          </Key>
+          <Property Name="ScholarshipDiscountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="Scholarship" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Double" />
+          <NavigationProperty Name="StudentAssessments" Relationship="DCFIModel.fkAssesDiscount" FromRole="ScholarshipDiscount" ToRole="StudentAssessment" />
+          <NavigationProperty Name="StudentEnrollments" Relationship="DCFIModel.fkEnrolDiscount" FromRole="ScholarshipDiscount" ToRole="StudentEnrollment" />
+          <NavigationProperty Name="Students" Relationship="DCFIModel.fkStudent_Discount" FromRole="ScholarshipDiscount" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="SchoolYear">
+          <Key>
+            <PropertyRef Name="SY" />
+          </Key>
+          <Property Name="SY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentSY" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Fees" Relationship="DCFIModel.FK__Fees__SY__27C3E46E" FromRole="SchoolYear" ToRole="Fee" />
+          <NavigationProperty Name="GradeSections" Relationship="DCFIModel.FK__GradeSection__SY__28B808A7" FromRole="SchoolYear" ToRole="GradeSection" />
+          <NavigationProperty Name="StudentEnrollments" Relationship="DCFIModel.FK__StudentEnrol__SY__26CFC035" FromRole="SchoolYear" ToRole="StudentEnrollment" />
+        </EntityType>
+        <EntityType Name="Sibling">
+          <Key>
+            <PropertyRef Name="SiblingId" />
+          </Key>
+          <Property Name="SiblingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SiblingStudentId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Student" Relationship="DCFIModel.fk_StudentSibling" FromRole="Sibling" ToRole="Student" />
+          <NavigationProperty Name="Student1" Relationship="DCFIModel.fk_StudentSibling_Stud" FromRole="Sibling" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentAssessment">
+          <Key>
+            <PropertyRef Name="StudentAssessmentId" />
+          </Key>
+          <Property Name="StudentAssessmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentSY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FeeID" Type="Int32" />
+          <Property Name="DiscountId" Type="Int32" />
+          <NavigationProperty Name="Fee" Relationship="DCFIModel.fk_Assess_Fee" FromRole="StudentAssessment" ToRole="Fee" />
+          <NavigationProperty Name="ScholarshipDiscount" Relationship="DCFIModel.fkAssesDiscount" FromRole="StudentAssessment" ToRole="ScholarshipDiscount" />
+          <NavigationProperty Name="StudentEnrollment" Relationship="DCFIModel.fk_Assess_StudSY" FromRole="StudentAssessment" ToRole="StudentEnrollment" />
+        </EntityType>
+        <EntityType Name="StudentEnrollment">
+          <Key>
+            <PropertyRef Name="StudentSY" />
+          </Key>
+          <Property Name="StudentSY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="GradeLevel" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="GradeSectionCode" Type="Int32" />
+          <Property Name="Dismissed" Type="Boolean" />
+          <Property Name="StudentEnrollmentsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountId" Type="Int32" />
+          <Property Name="Stat" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GradeSection" Relationship="DCFIModel.fk_StudentEnr_Gs" FromRole="StudentEnrollment" ToRole="GradeSection" />
+          <NavigationProperty Name="ScholarshipDiscount" Relationship="DCFIModel.fkEnrolDiscount" FromRole="StudentEnrollment" ToRole="ScholarshipDiscount" />
+          <NavigationProperty Name="SchoolYear" Relationship="DCFIModel.FK__StudentEnrol__SY__26CFC035" FromRole="StudentEnrollment" ToRole="SchoolYear" />
+          <NavigationProperty Name="StudentAssessments" Relationship="DCFIModel.fk_Assess_StudSY" FromRole="StudentEnrollment" ToRole="StudentAssessment" />
+          <NavigationProperty Name="StudentSubjects" Relationship="DCFIModel.FK__StudentSu__Stude__2D7CBDC4" FromRole="StudentEnrollment" ToRole="StudentSubject" />
+          <NavigationProperty Name="Student" Relationship="DCFIModel.fk_StudentEnr_Stud" FromRole="StudentEnrollment" ToRole="Student" />
+          <NavigationProperty Name="StudentTraits" Relationship="DCFIModel.fk_StudenTrait_StudEnr" FromRole="StudentEnrollment" ToRole="StudentTrait" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="POBAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBBarangay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBTownCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeBarangay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeTownCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolLastAttended" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FathersName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FathersOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FathersAverageYearlyIncome" Type="Double" />
+          <Property Name="FathersEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MothersMaidenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MothersOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MothersAverageYearlyIncome" Type="Double" />
+          <Property Name="MothersEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GuardiansName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GuardiansOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GuardiansAverageYearlyIncome" Type="Double" />
+          <Property Name="MadrasahEnrolled" Type="Boolean" />
+          <Property Name="DateAdmitted" Type="DateTime" Precision="0" />
+          <Property Name="GradeLevel" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Average" Type="Double" />
+          <Property Name="Card" Type="Boolean" />
+          <Property Name="GoodMoral" Type="Boolean" />
+          <Property Name="BirthCertificate" Type="Boolean" />
+          <Property Name="LastSYAttendedDCFI" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Dismissed" Type="Boolean" Nullable="false" />
+          <Property Name="Graduated" Type="Boolean" Nullable="false" />
+          <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ScholarshipDiscountId" Type="Int32" />
+          <Property Name="UnitsFailedLastYear" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ranking" Type="Int32" />
+          <Property Name="RunningBalance" Type="Double" />
+          <Property Name="Section" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StudentLRN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstAverage" Type="Double" />
+          <Property Name="SecondAverage" Type="Double" />
+          <Property Name="ThirdAverage" Type="Double" />
+          <NavigationProperty Name="Payments" Relationship="DCFIModel.fk_Pay_Student" FromRole="Student" ToRole="Payment" />
+          <NavigationProperty Name="ScholarshipDiscount" Relationship="DCFIModel.fkStudent_Discount" FromRole="Student" ToRole="ScholarshipDiscount" />
+          <NavigationProperty Name="Siblings" Relationship="DCFIModel.fk_StudentSibling" FromRole="Student" ToRole="Sibling" />
+          <NavigationProperty Name="Siblings1" Relationship="DCFIModel.fk_StudentSibling_Stud" FromRole="Student" ToRole="Sibling" />
+          <NavigationProperty Name="StudentEnrollments" Relationship="DCFIModel.fk_StudentEnr_Stud" FromRole="Student" ToRole="StudentEnrollment" />
+          <Property Name="GradeBeforeDC" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentSubject">
+          <Key>
+            <PropertyRef Name="StudentSubjectsID" />
+          </Key>
+          <Property Name="StudentEnrSubCode" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="StudentSY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FirstPeriodicRating" Type="Double" />
+          <Property Name="SecondPeriodicRating" Type="Double" />
+          <Property Name="ThirdPeriodicRating" Type="Double" />
+          <Property Name="FourthPeriodicRating" Type="Double" />
+          <Property Name="StudentSubjectsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LockFirst" Type="Boolean" />
+          <Property Name="LockSecond" Type="Boolean" />
+          <Property Name="LockThird" Type="Boolean" />
+          <Property Name="LockFourth" Type="Boolean" />
+          <Property Name="FirstEntered" Type="DateTime" Precision="3" />
+          <Property Name="SecondEntered" Type="DateTime" Precision="3" />
+          <Property Name="ThirdEntered" Type="DateTime" Precision="3" />
+          <Property Name="FourthEntered" Type="DateTime" Precision="3" />
+          <Property Name="FourthLocked" Type="DateTime" Precision="3" />
+          <Property Name="ThirdLocked" Type="DateTime" Precision="3" />
+          <Property Name="SecondLocked" Type="DateTime" Precision="3" />
+          <Property Name="FirstLocked" Type="DateTime" Precision="3" />
+          <Property Name="SubjectAssignments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentEnrollment" Relationship="DCFIModel.FK__StudentSu__Stude__2D7CBDC4" FromRole="StudentSubject" ToRole="StudentEnrollment" />
+          <NavigationProperty Name="Subject" Relationship="DCFIModel.FK__StudentSu__Subje__2E70E1FD" FromRole="StudentSubject" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="StudentTrait">
+          <Key>
+            <PropertyRef Name="StudentEnrTraitCode" />
+          </Key>
+          <Property Name="StudentEnrTraitCode" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="TraitsID" Type="Int32" Nullable="false" />
+          <Property Name="StudentSY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FirstPeriodicRating" Type="Double" />
+          <Property Name="SecondPeriodicRating" Type="Double" />
+          <Property Name="ThirdPeriodicRating" Type="Double" />
+          <Property Name="FourthPeriodicRating" Type="Double" />
+          <Property Name="LockFirst" Type="Boolean" />
+          <Property Name="LockSecond" Type="Boolean" />
+          <Property Name="LockThird" Type="Boolean" />
+          <Property Name="LockCFourth" Type="Boolean" />
+          <Property Name="FirstEntered" Type="DateTime" Precision="3" />
+          <Property Name="FirstLocked" Type="DateTime" Precision="3" />
+          <Property Name="SecondLocked" Type="DateTime" Precision="3" />
+          <Property Name="SecondEntered" Type="DateTime" Precision="3" />
+          <Property Name="ThirdEntered" Type="DateTime" Precision="3" />
+          <Property Name="ThirdLocked" Type="DateTime" Precision="3" />
+          <Property Name="FourthLocked" Type="DateTime" Precision="3" />
+          <Property Name="FourthEntered" Type="DateTime" Precision="3" />
+          <Property Name="GradeSectionCode" Type="Int32" />
+          <NavigationProperty Name="GradeSection" Relationship="DCFIModel.FK__StudentTr__Grade__1E3A7A34" FromRole="StudentTrait" ToRole="GradeSection" />
+          <NavigationProperty Name="StudentEnrollment" Relationship="DCFIModel.fk_StudenTrait_StudEnr" FromRole="StudentTrait" ToRole="StudentEnrollment" />
+          <NavigationProperty Name="Trait" Relationship="DCFIModel.fk_StudentSub_Trait" FromRole="StudentTrait" ToRole="Trait" />
+        </EntityType>
+        <EntityType Name="SubjectAssignment">
+          <Key>
+            <PropertyRef Name="SubjectAssignmentsID" />
+          </Key>
+          <Property Name="SubjectAssignmentsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SY" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" />
+          <Property Name="GradeSectionCode" Type="Int32" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="TimeSlotCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room" Relationship="DCFIModel.fk_Rooms" FromRole="SubjectAssignment" ToRole="Room" />
+          <NavigationProperty Name="Schedules" Relationship="DCFIModel.fk_Sched_StudAss" FromRole="SubjectAssignment" ToRole="Schedule" />
+          <NavigationProperty Name="Subject" Relationship="DCFIModel.fk_SA_Subject" FromRole="SubjectAssignment" ToRole="Subject" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_SA_Teacher" FromRole="SubjectAssignment" ToRole="Teacher" />
+          <NavigationProperty Name="Timeslot" Relationship="DCFIModel.fkSA_Timeslot" FromRole="SubjectAssignment" ToRole="Timeslot" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectCode" />
+          </Key>
+          <Property Name="SubjectCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LearningAreaCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GradeLevel" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MPW" Type="Int32" />
+          <NavigationProperty Name="CurriculumSubjects" Relationship="DCFIModel.fk_CurrSub_Sub" FromRole="Subject" ToRole="CurriculumSubject" />
+          <NavigationProperty Name="GradeLevel1" Relationship="DCFIModel.fk_Subjects_Grade" FromRole="Subject" ToRole="GradeLevel" />
+          <NavigationProperty Name="LearningArea" Relationship="DCFIModel.fk_Subjects_Learning" FromRole="Subject" ToRole="LearningArea" />
+          <NavigationProperty Name="StudentSubjects" Relationship="DCFIModel.FK__StudentSu__Subje__2E70E1FD" FromRole="Subject" ToRole="StudentSubject" />
+          <NavigationProperty Name="SubjectAssignments" Relationship="DCFIModel.fk_SA_Subject" FromRole="Subject" ToRole="SubjectAssignment" />
+        </EntityType>
+        <EntityType Name="TeacherChildren">
+          <Key>
+            <PropertyRef Name="ChildId" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ChildId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_TC_Teacher" FromRole="TeacherChildren" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="TeacherEducationalBackground">
+          <Key>
+            <PropertyRef Name="TEBId" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="TEBId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducLevel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfSchool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEBYearFrom" Type="DateTime" Precision="0" />
+          <Property Name="TEBYearTo" Type="DateTime" Precision="0" />
+          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HonorsReceived" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_TEB_Teacher" FromRole="TeacherEducationalBackground" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="TeacherEligibility">
+          <Key>
+            <PropertyRef Name="EligibilityId" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="EligibilityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eligibility" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfExam" Type="DateTime" Precision="0" />
+          <Property Name="PlaceOfExam" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IssueDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_Elig_Teacher" FromRole="TeacherEligibility" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="TIN" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfAppointment" Type="DateTime" Precision="0" />
+          <Property Name="EmploymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBMunicipality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CivilStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HeightCm" Type="Int32" />
+          <Property Name="WeightKg" Type="Double" />
+          <Property Name="BloodType" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SSSNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PagIBIGNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhilHealthNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAStreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RARegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAMunicipality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResTelephoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PAStreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PARegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PAProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PAMunicipality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousSchool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DialectSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseBusinessAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseEmployerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseTelephoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PERAA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Academic" Type="Boolean" />
+          <NavigationProperty Name="GradeSections" Relationship="DCFIModel.fkGRadeS_Teacher" FromRole="Teacher" ToRole="GradeSection" />
+          <NavigationProperty Name="SubjectAssignments" Relationship="DCFIModel.fk_SA_Teacher" FromRole="Teacher" ToRole="SubjectAssignment" />
+          <NavigationProperty Name="TeacherChildrens" Relationship="DCFIModel.fk_TC_Teacher" FromRole="Teacher" ToRole="TeacherChildren" />
+          <NavigationProperty Name="TeacherEducationalBackgrounds" Relationship="DCFIModel.fk_TEB_Teacher" FromRole="Teacher" ToRole="TeacherEducationalBackground" />
+          <NavigationProperty Name="TeacherEligibilities" Relationship="DCFIModel.fk_Elig_Teacher" FromRole="Teacher" ToRole="TeacherEligibility" />
+          <NavigationProperty Name="TrainingSeminars" Relationship="DCFIModel.fk_TS_Teacher" FromRole="Teacher" ToRole="TrainingSeminar" />
+          <NavigationProperty Name="WorkExperiences" Relationship="DCFIModel.fk_WE_Teacher" FromRole="Teacher" ToRole="WorkExperience" />
+          <Property Name="Salary" Type="Double" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Timeslot">
+          <Key>
+            <PropertyRef Name="TimeSlotCode" />
+          </Key>
+          <Property Name="TimeSlotCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <Property Name="TimeStart" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEnd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Days" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="TotalMins" Type="Int32" />
+          <NavigationProperty Name="Schedules" Relationship="DCFIModel.fk_Sched_Time" FromRole="Timeslot" ToRole="Schedule" />
+          <NavigationProperty Name="SubjectAssignments" Relationship="DCFIModel.fkSA_Timeslot" FromRole="Timeslot" ToRole="SubjectAssignment" />
+        </EntityType>
+        <EntityType Name="TrainingSeminar">
+          <Key>
+            <PropertyRef Name="TSID" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="TSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaOfTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateFrom" Type="DateTime" Precision="0" />
+          <Property Name="DateTo" Type="DateTime" Precision="0" />
+          <Property Name="NoOfHours" Type="Double" />
+          <Property Name="ConductedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_TS_Teacher" FromRole="TrainingSeminar" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Trait">
+          <Key>
+            <PropertyRef Name="TraitsID" />
+          </Key>
+          <Property Name="CurrTrait" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TraitsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="Int32" />
+          <NavigationProperty Name="StudentTraits" Relationship="DCFIModel.fk_StudentSub_Trait" FromRole="Trait" ToRole="StudentTrait" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Deactivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserType" Relationship="DCFIModel.fk_User_Type" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeCode" />
+          </Key>
+          <Property Name="UserTypeCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="UserType1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="DCFIModel.fk_User_Type" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <EntityType Name="WorkExperience">
+          <Key>
+            <PropertyRef Name="WEId" />
+          </Key>
+          <Property Name="TeacherId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="WEId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkExpFrom" Type="DateTime" Precision="0" />
+          <Property Name="WorkExpTo" Type="DateTime" Precision="0" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MonthlySalary" Type="Double" />
+          <Property Name="StatusOfEmployment" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teacher" Relationship="DCFIModel.fk_WE_Teacher" FromRole="WorkExperience" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="fk_Room_Build">
+          <End Type="DCFIModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="DCFIModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingCode" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="BuildingCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CurrSub_Curr">
+          <End Type="DCFIModel.Curriculum" Role="Curriculum" Multiplicity="1" />
+          <End Type="DCFIModel.CurriculumSubject" Role="CurriculumSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curriculum">
+              <PropertyRef Name="CurriculumCode" />
+            </Principal>
+            <Dependent Role="CurriculumSubject">
+              <PropertyRef Name="CurriculumCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CurrSub_Sub">
+          <End Type="DCFIModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="DCFIModel.CurriculumSubject" Role="CurriculumSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="CurriculumSubject">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fees__SY__27C3E46E">
+          <End Type="DCFIModel.SchoolYear" Role="SchoolYear" Multiplicity="0..1" />
+          <End Type="DCFIModel.Fee" Role="Fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="Fee">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assess_Fee">
+          <End Type="DCFIModel.Fee" Role="Fee" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentAssessment" Role="StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fee">
+              <PropertyRef Name="FeeID" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="FeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Fee_GradeLevel">
+          <End Type="DCFIModel.GradeLevel" Role="GradeLevel" Multiplicity="0..1" />
+          <End Type="DCFIModel.Fee" Role="Fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevel">
+              <PropertyRef Name="GradeLevel1" />
+            </Principal>
+            <Dependent Role="Fee">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Payment_Fee">
+          <End Type="DCFIModel.Fee" Role="Fee" Multiplicity="1" />
+          <End Type="DCFIModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fee">
+              <PropertyRef Name="FeeID" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="FeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Grade_Section">
+          <End Type="DCFIModel.GradeLevel" Role="GradeLevel" Multiplicity="1" />
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevel">
+              <PropertyRef Name="GradeLevel1" />
+            </Principal>
+            <Dependent Role="GradeSection">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Subjects_Grade">
+          <End Type="DCFIModel.GradeLevel" Role="GradeLevel" Multiplicity="1" />
+          <End Type="DCFIModel.Subject" Role="Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevel">
+              <PropertyRef Name="GradeLevel1" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="GradeLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GradeSection__SY__28B808A7">
+          <End Type="DCFIModel.SchoolYear" Role="SchoolYear" Multiplicity="0..1" />
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="GradeSection">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentTr__Grade__1E3A7A34">
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentTrait" Role="StudentTrait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeSection">
+              <PropertyRef Name="GradeSectionCode" />
+            </Principal>
+            <Dependent Role="StudentTrait">
+              <PropertyRef Name="GradeSectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoomsGS">
+          <End Type="DCFIModel.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="GradeSection">
+              <PropertyRef Name="HomeRoomNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentEnr_Gs">
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeSection">
+              <PropertyRef Name="GradeSectionCode" />
+            </Principal>
+            <Dependent Role="StudentEnrollment">
+              <PropertyRef Name="GradeSectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkGRadeS_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="DCFIModel.GradeSection" Role="GradeSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="GradeSection">
+              <PropertyRef Name="HomeRoomTeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Subjects_Learning">
+          <End Type="DCFIModel.LearningArea" Role="LearningArea" Multiplicity="1" />
+          <End Type="DCFIModel.Subject" Role="Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningArea">
+              <PropertyRef Name="LearningAreaCode" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="LearningAreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pay_Student">
+          <End Type="DCFIModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="DCFIModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Payment_OR">
+          <End Type="DCFIModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="DCFIModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="ORNo" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="ORNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rooms">
+          <End Type="DCFIModel.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="DCFIModel.SubjectAssignment" Role="SubjectAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="SubjectAssignment">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sched_StudAss">
+          <End Type="DCFIModel.SubjectAssignment" Role="SubjectAssignment" Multiplicity="0..1" />
+          <End Type="DCFIModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectAssignment">
+              <PropertyRef Name="SubjectAssignmentsID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="StudentAssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sched_Time">
+          <End Type="DCFIModel.Timeslot" Role="Timeslot" Multiplicity="0..1" />
+          <End Type="DCFIModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timeslot">
+              <PropertyRef Name="TimeSlotCode" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TimeslotCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkAssesDiscount">
+          <End Type="DCFIModel.ScholarshipDiscount" Role="ScholarshipDiscount" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentAssessment" Role="StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscount">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="DiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEnrolDiscount">
+          <End Type="DCFIModel.ScholarshipDiscount" Role="ScholarshipDiscount" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscount">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="StudentEnrollment">
+              <PropertyRef Name="DiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStudent_Discount">
+          <End Type="DCFIModel.ScholarshipDiscount" Role="ScholarshipDiscount" Multiplicity="0..1" />
+          <End Type="DCFIModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScholarshipDiscount">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ScholarshipDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEnrol__SY__26CFC035">
+          <End Type="DCFIModel.SchoolYear" Role="SchoolYear" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchoolYear">
+              <PropertyRef Name="SY" />
+            </Principal>
+            <Dependent Role="StudentEnrollment">
+              <PropertyRef Name="SY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSibling">
+          <End Type="DCFIModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="DCFIModel.Sibling" Role="Sibling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Sibling">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSibling_Stud">
+          <End Type="DCFIModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="DCFIModel.Sibling" Role="Sibling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Sibling">
+              <PropertyRef Name="SiblingStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Assess_StudSY">
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="0..1" />
+          <End Type="DCFIModel.StudentAssessment" Role="StudentAssessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollment">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentAssessment">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Stude__2D7CBDC4">
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="1" />
+          <End Type="DCFIModel.StudentSubject" Role="StudentSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollment">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentSubject">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentEnr_Stud">
+          <End Type="DCFIModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentEnrollment">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudenTrait_StudEnr">
+          <End Type="DCFIModel.StudentEnrollment" Role="StudentEnrollment" Multiplicity="1" />
+          <End Type="DCFIModel.StudentTrait" Role="StudentTrait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEnrollment">
+              <PropertyRef Name="StudentSY" />
+            </Principal>
+            <Dependent Role="StudentTrait">
+              <PropertyRef Name="StudentSY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Subje__2E70E1FD">
+          <End Type="DCFIModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="DCFIModel.StudentSubject" Role="StudentSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="StudentSubject">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentSub_Trait">
+          <End Type="DCFIModel.Trait" Role="Trait" Multiplicity="1" />
+          <End Type="DCFIModel.StudentTrait" Role="StudentTrait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trait">
+              <PropertyRef Name="TraitsID" />
+            </Principal>
+            <Dependent Role="StudentTrait">
+              <PropertyRef Name="TraitsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SA_Subject">
+          <End Type="DCFIModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="DCFIModel.SubjectAssignment" Role="SubjectAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectCode" />
+            </Principal>
+            <Dependent Role="SubjectAssignment">
+              <PropertyRef Name="SubjectCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SA_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="DCFIModel.SubjectAssignment" Role="SubjectAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="SubjectAssignment">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSA_Timeslot">
+          <End Type="DCFIModel.Timeslot" Role="Timeslot" Multiplicity="0..1" />
+          <End Type="DCFIModel.SubjectAssignment" Role="SubjectAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timeslot">
+              <PropertyRef Name="TimeSlotCode" />
+            </Principal>
+            <Dependent Role="SubjectAssignment">
+              <PropertyRef Name="TimeSlotCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TC_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DCFIModel.TeacherChildren" Role="TeacherChildren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherChildren">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TEB_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DCFIModel.TeacherEducationalBackground" Role="TeacherEducationalBackground" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherEducationalBackground">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Elig_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DCFIModel.TeacherEligibility" Role="TeacherEligibility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherEligibility">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TS_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DCFIModel.TrainingSeminar" Role="TrainingSeminar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TrainingSeminar">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_WE_Teacher">
+          <End Type="DCFIModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DCFIModel.WorkExperience" Role="WorkExperience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="WorkExperience">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_User_Type">
+          <End Type="DCFIModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="DCFIModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DCFIModelStoreContainer" CdmEntityContainer="DCFIEntities">
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="DCFIModel.Building">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="BuildingCode" ColumnName="BuildingCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curriculums">
+            <EntityTypeMapping TypeName="DCFIModel.Curriculum">
+              <MappingFragment StoreEntitySet="Curriculums">
+                <ScalarProperty Name="CurrentCurr" ColumnName="CurrentCurr" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CurriculumCode" ColumnName="CurriculumCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurriculumSubjects">
+            <EntityTypeMapping TypeName="DCFIModel.CurriculumSubject">
+              <MappingFragment StoreEntitySet="CurriculumSubjects">
+                <ScalarProperty Name="CurriculumSubjectsID" ColumnName="CurriculumSubjectsID" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="CurriculumCode" ColumnName="CurriculumCode" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="CurrSubCode" ColumnName="CurrSubCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fees">
+            <EntityTypeMapping TypeName="DCFIModel.Fee">
+              <MappingFragment StoreEntitySet="Fees">
+                <ScalarProperty Name="SY" ColumnName="SY" />
+                <ScalarProperty Name="DiscountFullPay" ColumnName="DiscountFullPay" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="SYImplemented" ColumnName="SYImplemented" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="FeeDescription" ColumnName="FeeDescription" />
+                <ScalarProperty Name="NumPay" ColumnName="NumPay" />
+                <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeLevels">
+            <EntityTypeMapping TypeName="DCFIModel.GradeLevel">
+              <MappingFragment StoreEntitySet="GradeLevels">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GradeLevel1" ColumnName="GradeLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeSections">
+            <EntityTypeMapping TypeName="DCFIModel.GradeSection">
+              <MappingFragment StoreEntitySet="GradeSections">
+                <ScalarProperty Name="SY" ColumnName="SY" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="HomeRoomNumber" ColumnName="HomeRoomNumber" />
+                <ScalarProperty Name="HomeRoomTeacherId" ColumnName="HomeRoomTeacherId" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="GradeSectionCode" ColumnName="GradeSectionCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningAreas">
+            <EntityTypeMapping TypeName="DCFIModel.LearningArea">
+              <MappingFragment StoreEntitySet="LearningAreas">
+                <ScalarProperty Name="RatePerSubject" ColumnName="RatePerSubject" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="RatePerUnit" ColumnName="RatePerUnit" />
+                <ScalarProperty Name="Academic" ColumnName="Academic" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LearningAreaCode" ColumnName="LearningAreaCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="DCFIModel.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassedData" ColumnName="PassedData" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CLUD" ColumnName="CLUD" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="DCFIModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
+                <ScalarProperty Name="PaidTo" ColumnName="PaidTo" />
+                <ScalarProperty Name="BusinessStyle" ColumnName="BusinessStyle" />
+                <ScalarProperty Name="PaidAt" ColumnName="PaidAt" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="ReceivedFrom" ColumnName="ReceivedFrom" />
+                <ScalarProperty Name="SettlementFor" ColumnName="SettlementFor" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ORNo" ColumnName="ORNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="DCFIModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+                <ScalarProperty Name="ORNo" ColumnName="ORNo" />
+                <ScalarProperty Name="DetailNumber" ColumnName="DetailNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="DCFIModel.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="BuildingCode" ColumnName="BuildingCode" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="DCFIModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="TimeslotCode" ColumnName="TimeslotCode" />
+                <ScalarProperty Name="StudentAssignmentID" ColumnName="StudentAssignmentID" />
+                <ScalarProperty Name="Schedule1" ColumnName="Schedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScholarshipDiscounts">
+            <EntityTypeMapping TypeName="DCFIModel.ScholarshipDiscount">
+              <MappingFragment StoreEntitySet="ScholarshipDiscounts">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="ScholarshipDiscountId" ColumnName="ScholarshipDiscountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchoolYears">
+            <EntityTypeMapping TypeName="DCFIModel.SchoolYear">
+              <MappingFragment StoreEntitySet="SchoolYear">
+                <ScalarProperty Name="CurrentSY" ColumnName="CurrentSY" />
+                <ScalarProperty Name="SY" ColumnName="SY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siblings">
+            <EntityTypeMapping TypeName="DCFIModel.Sibling">
+              <MappingFragment StoreEntitySet="Siblings">
+                <ScalarProperty Name="SiblingStudentId" ColumnName="SiblingStudentId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="SiblingId" ColumnName="SiblingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAssessments">
+            <EntityTypeMapping TypeName="DCFIModel.StudentAssessment">
+              <MappingFragment StoreEntitySet="StudentAssessment">
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
+                <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+                <ScalarProperty Name="StudentSY" ColumnName="StudentSY" />
+                <ScalarProperty Name="StudentAssessmentId" ColumnName="StudentAssessmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEnrollments">
+            <EntityTypeMapping TypeName="DCFIModel.StudentEnrollment">
+              <MappingFragment StoreEntitySet="StudentEnrollments">
+                <ScalarProperty Name="SY" ColumnName="SY" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
+                <ScalarProperty Name="StudentEnrollmentsID" ColumnName="StudentEnrollmentsID" />
+                <ScalarProperty Name="Dismissed" ColumnName="Dismissed" />
+                <ScalarProperty Name="GradeSectionCode" ColumnName="GradeSectionCode" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentSY" ColumnName="StudentSY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="DCFIModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="GradeBeforeDC" ColumnName="GradeBeforeDC" />
+                <ScalarProperty Name="ThirdAverage" ColumnName="ThirdAverage" />
+                <ScalarProperty Name="SecondAverage" ColumnName="SecondAverage" />
+                <ScalarProperty Name="FirstAverage" ColumnName="FirstAverage" />
+                <ScalarProperty Name="StudentLRN" ColumnName="StudentLRN" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="RunningBalance" ColumnName="RunningBalance" />
+                <ScalarProperty Name="ranking" ColumnName="ranking" />
+                <ScalarProperty Name="UnitsFailedLastYear" ColumnName="UnitsFailedLastYear" />
+                <ScalarProperty Name="ScholarshipDiscountId" ColumnName="ScholarshipDiscountId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Graduated" ColumnName="Graduated" />
+                <ScalarProperty Name="Dismissed" ColumnName="Dismissed" />
+                <ScalarProperty Name="LastSYAttendedDCFI" ColumnName="LastSYAttendedDCFI" />
+                <ScalarProperty Name="BirthCertificate" ColumnName="BirthCertificate" />
+                <ScalarProperty Name="GoodMoral" ColumnName="GoodMoral" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="DateAdmitted" ColumnName="DateAdmitted" />
+                <ScalarProperty Name="MadrasahEnrolled" ColumnName="MadrasahEnrolled" />
+                <ScalarProperty Name="GuardiansAverageYearlyIncome" ColumnName="GuardiansAverageYearlyIncome" />
+                <ScalarProperty Name="GuardiansOccupation" ColumnName="GuardiansOccupation" />
+                <ScalarProperty Name="GuardiansName" ColumnName="GuardiansName" />
+                <ScalarProperty Name="MothersEducation" ColumnName="MothersEducation" />
+                <ScalarProperty Name="MothersAverageYearlyIncome" ColumnName="MothersAverageYearlyIncome" />
+                <ScalarProperty Name="MothersOccupation" ColumnName="MothersOccupation" />
+                <ScalarProperty Name="MothersMaidenName" ColumnName="MothersMaidenName" />
+                <ScalarProperty Name="FathersEducation" ColumnName="FathersEducation" />
+                <ScalarProperty Name="FathersAverageYearlyIncome" ColumnName="FathersAverageYearlyIncome" />
+                <ScalarProperty Name="FathersOccupation" ColumnName="FathersOccupation" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="SchoolLastAttended" ColumnName="SchoolLastAttended" />
+                <ScalarProperty Name="HomeProvince" ColumnName="HomeProvince" />
+                <ScalarProperty Name="HomeTownCity" ColumnName="HomeTownCity" />
+                <ScalarProperty Name="HomeBarangay" ColumnName="HomeBarangay" />
+                <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+                <ScalarProperty Name="POBProvince" ColumnName="POBProvince" />
+                <ScalarProperty Name="POBTownCity" ColumnName="POBTownCity" />
+                <ScalarProperty Name="POBBarangay" ColumnName="POBBarangay" />
+                <ScalarProperty Name="POBAddress" ColumnName="POBAddress" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSubjects">
+            <EntityTypeMapping TypeName="DCFIModel.StudentSubject">
+              <MappingFragment StoreEntitySet="StudentSubjects">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="SubjectAssignments" ColumnName="SubjectAssignments" />
+                <ScalarProperty Name="FirstLocked" ColumnName="FirstLocked" />
+                <ScalarProperty Name="SecondLocked" ColumnName="SecondLocked" />
+                <ScalarProperty Name="ThirdLocked" ColumnName="ThirdLocked" />
+                <ScalarProperty Name="FourthLocked" ColumnName="FourthLocked" />
+                <ScalarProperty Name="FourthEntered" ColumnName="FourthEntered" />
+                <ScalarProperty Name="ThirdEntered" ColumnName="ThirdEntered" />
+                <ScalarProperty Name="SecondEntered" ColumnName="SecondEntered" />
+                <ScalarProperty Name="FirstEntered" ColumnName="FirstEntered" />
+                <ScalarProperty Name="LockFourth" ColumnName="LockFourth" />
+                <ScalarProperty Name="LockThird" ColumnName="LockThird" />
+                <ScalarProperty Name="LockSecond" ColumnName="LockSecond" />
+                <ScalarProperty Name="LockFirst" ColumnName="LockFirst" />
+                <ScalarProperty Name="StudentSubjectsID" ColumnName="StudentSubjectsID" />
+                <ScalarProperty Name="FourthPeriodicRating" ColumnName="FourthPeriodicRating" />
+                <ScalarProperty Name="ThirdPeriodicRating" ColumnName="ThirdPeriodicRating" />
+                <ScalarProperty Name="SecondPeriodicRating" ColumnName="SecondPeriodicRating" />
+                <ScalarProperty Name="FirstPeriodicRating" ColumnName="FirstPeriodicRating" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="StudentSY" ColumnName="StudentSY" />
+                <ScalarProperty Name="StudentEnrSubCode" ColumnName="StudentEnrSubCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentTraits">
+            <EntityTypeMapping TypeName="DCFIModel.StudentTrait">
+              <MappingFragment StoreEntitySet="StudentTraits">
+                <ScalarProperty Name="GradeSectionCode" ColumnName="GradeSectionCode" />
+                <ScalarProperty Name="FourthEntered" ColumnName="FourthEntered" />
+                <ScalarProperty Name="FourthLocked" ColumnName="FourthLocked" />
+                <ScalarProperty Name="ThirdLocked" ColumnName="ThirdLocked" />
+                <ScalarProperty Name="ThirdEntered" ColumnName="ThirdEntered" />
+                <ScalarProperty Name="SecondEntered" ColumnName="SecondEntered" />
+                <ScalarProperty Name="SecondLocked" ColumnName="SecondLocked" />
+                <ScalarProperty Name="FirstLocked" ColumnName="FirstLocked" />
+                <ScalarProperty Name="FirstEntered" ColumnName="FirstEntered" />
+                <ScalarProperty Name="LockCFourth" ColumnName="LockCFourth" />
+                <ScalarProperty Name="LockThird" ColumnName="LockThird" />
+                <ScalarProperty Name="LockSecond" ColumnName="LockSecond" />
+                <ScalarProperty Name="LockFirst" ColumnName="LockFirst" />
+                <ScalarProperty Name="FourthPeriodicRating" ColumnName="FourthPeriodicRating" />
+                <ScalarProperty Name="ThirdPeriodicRating" ColumnName="ThirdPeriodicRating" />
+                <ScalarProperty Name="SecondPeriodicRating" ColumnName="SecondPeriodicRating" />
+                <ScalarProperty Name="FirstPeriodicRating" ColumnName="FirstPeriodicRating" />
+                <ScalarProperty Name="StudentSY" ColumnName="StudentSY" />
+                <ScalarProperty Name="TraitsID" ColumnName="TraitsID" />
+                <ScalarProperty Name="StudentEnrTraitCode" ColumnName="StudentEnrTraitCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectAssignments">
+            <EntityTypeMapping TypeName="DCFIModel.SubjectAssignment">
+              <MappingFragment StoreEntitySet="SubjectAssignments">
+                <ScalarProperty Name="TimeSlotCode" ColumnName="TimeSlotCode" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="GradeSectionCode" ColumnName="GradeSectionCode" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="SY" ColumnName="SY" />
+                <ScalarProperty Name="SubjectAssignmentsID" ColumnName="SubjectAssignmentsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="DCFIModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="MPW" ColumnName="MPW" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="LearningAreaCode" ColumnName="LearningAreaCode" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherChildrens">
+            <EntityTypeMapping TypeName="DCFIModel.TeacherChildren">
+              <MappingFragment StoreEntitySet="TeacherChildren">
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherEducationalBackgrounds">
+            <EntityTypeMapping TypeName="DCFIModel.TeacherEducationalBackground">
+              <MappingFragment StoreEntitySet="TeacherEducationalBackground">
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="HonorsReceived" ColumnName="HonorsReceived" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="TEBYearTo" ColumnName="TEBYearTo" />
+                <ScalarProperty Name="TEBYearFrom" ColumnName="TEBYearFrom" />
+                <ScalarProperty Name="NameOfSchool" ColumnName="NameOfSchool" />
+                <ScalarProperty Name="EducLevel" ColumnName="EducLevel" />
+                <ScalarProperty Name="TEBId" ColumnName="TEBId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherEligibilities">
+            <EntityTypeMapping TypeName="DCFIModel.TeacherEligibility">
+              <MappingFragment StoreEntitySet="TeacherEligibilities">
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="PlaceOfExam" ColumnName="PlaceOfExam" />
+                <ScalarProperty Name="DateOfExam" ColumnName="DateOfExam" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+                <ScalarProperty Name="EligibilityId" ColumnName="EligibilityId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="DCFIModel.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Academic" ColumnName="Academic" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PERAA" ColumnName="PERAA" />
+                <ScalarProperty Name="SpouseTelephoneNo" ColumnName="SpouseTelephoneNo" />
+                <ScalarProperty Name="SpouseEmployerName" ColumnName="SpouseEmployerName" />
+                <ScalarProperty Name="SpouseBusinessAdd" ColumnName="SpouseBusinessAdd" />
+                <ScalarProperty Name="SpouseOccupation" ColumnName="SpouseOccupation" />
+                <ScalarProperty Name="SpouseMiddleName" ColumnName="SpouseMiddleName" />
+                <ScalarProperty Name="SpouseFirstName" ColumnName="SpouseFirstName" />
+                <ScalarProperty Name="SpouseLastName" ColumnName="SpouseLastName" />
+                <ScalarProperty Name="DialectSpoken" ColumnName="DialectSpoken" />
+                <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PAMunicipality" ColumnName="PAMunicipality" />
+                <ScalarProperty Name="PAProvince" ColumnName="PAProvince" />
+                <ScalarProperty Name="PARegion" ColumnName="PARegion" />
+                <ScalarProperty Name="PAStreetName" ColumnName="PAStreetName" />
+                <ScalarProperty Name="ResTelephoneNo" ColumnName="ResTelephoneNo" />
+                <ScalarProperty Name="RAMunicipality" ColumnName="RAMunicipality" />
+                <ScalarProperty Name="RAProvince" ColumnName="RAProvince" />
+                <ScalarProperty Name="RARegion" ColumnName="RARegion" />
+                <ScalarProperty Name="RAStreetName" ColumnName="RAStreetName" />
+                <ScalarProperty Name="PhilHealthNo" ColumnName="PhilHealthNo" />
+                <ScalarProperty Name="PagIBIGNo" ColumnName="PagIBIGNo" />
+                <ScalarProperty Name="SSSNum" ColumnName="SSSNum" />
+                <ScalarProperty Name="BloodType" ColumnName="BloodType" />
+                <ScalarProperty Name="WeightKg" ColumnName="WeightKg" />
+                <ScalarProperty Name="HeightCm" ColumnName="HeightCm" />
+                <ScalarProperty Name="CivilStatus" ColumnName="CivilStatus" />
+                <ScalarProperty Name="POBMunicipality" ColumnName="POBMunicipality" />
+                <ScalarProperty Name="POBProvince" ColumnName="POBProvince" />
+                <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+                <ScalarProperty Name="DateOfAppointment" ColumnName="DateOfAppointment" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timeslots">
+            <EntityTypeMapping TypeName="DCFIModel.Timeslot">
+              <MappingFragment StoreEntitySet="Timeslots">
+                <ScalarProperty Name="TotalMins" ColumnName="TotalMins" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="TimeSlotCode" ColumnName="TimeSlotCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingSeminars">
+            <EntityTypeMapping TypeName="DCFIModel.TrainingSeminar">
+              <MappingFragment StoreEntitySet="TrainingSeminars">
+                <ScalarProperty Name="ConductedBy" ColumnName="ConductedBy" />
+                <ScalarProperty Name="NoOfHours" ColumnName="NoOfHours" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="AreaOfTraining" ColumnName="AreaOfTraining" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TSID" ColumnName="TSID" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Traits">
+            <EntityTypeMapping TypeName="DCFIModel.Trait">
+              <MappingFragment StoreEntitySet="Traits">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="TraitsID" ColumnName="TraitsID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CurrTrait" ColumnName="CurrTrait" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DCFIModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="UserTypeCode" ColumnName="UserTypeCode" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="DCFIModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+                <ScalarProperty Name="UserTypeCode" ColumnName="UserTypeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkExperiences">
+            <EntityTypeMapping TypeName="DCFIModel.WorkExperience">
+              <MappingFragment StoreEntitySet="WorkExperiences">
+                <ScalarProperty Name="StatusOfEmployment" ColumnName="StatusOfEmployment" />
+                <ScalarProperty Name="MonthlySalary" ColumnName="MonthlySalary" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="WorkExpTo" ColumnName="WorkExpTo" />
+                <ScalarProperty Name="WorkExpFrom" ColumnName="WorkExpFrom" />
+                <ScalarProperty Name="WEId" ColumnName="WEId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

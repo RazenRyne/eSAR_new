@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D417D0E9-A1F3-4234-91EB-4CBBEA41B3B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eSAR</RootNamespace>
+    <AssemblyName>eSAR</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EQATEC.Analytics.Monitor, Version=3.2.1.0, Culture=neutral, PublicKeyToken=213c7c68adb58a17, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\EQATEC.Analytics.Monitor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=9.1.15.731, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=9.1.15.731, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Telerik.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Analytics, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.Analytics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.ChartView, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.ChartView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.PdfViewer, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.PdfViewer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.PivotGrid, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.PivotGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadChart, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RadChart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDiagram, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RadDiagram.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RadDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RadMarkupEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RichTextBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.RichTextEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Scheduler, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.Scheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.SpellChecker, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.SpellChecker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Maths, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Maths.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikData, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\TelerikData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikExport, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2015.1.331.40\TelerikExport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admission and Registration\AssessStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\AssessStudent.designer.cs">
+      <DependentUpon>AssessStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admission and Registration\frmControlSubjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\frmControlSubjects.designer.cs">
+      <DependentUpon>frmControlSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentDetails.designer.cs">
+      <DependentUpon>frmStudentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentList.designer.cs">
+      <DependentUpon>frmStudentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\frmStudentRegister.designer.cs">
+      <DependentUpon>frmStudentRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admission and Registration\ScheduleSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admission and Registration\ScheduleSelector.designer.cs">
+      <DependentUpon>ScheduleSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmLogIn.designer.cs">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\FrmMain.designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\LogoutDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\LogoutDetails.designer.cs">
+      <DependentUpon>LogoutDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing and Payment\ManageReceipt\frmManageReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing and Payment\ManageReceipt\frmManageReceipt.designer.cs">
+      <DependentUpon>frmManageReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing and Payment\PrintReceipt\frmPrintReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing and Payment\PrintReceipt\frmPrintReceipt.designer.cs">
+      <DependentUpon>frmPrintReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing and Payment\StudentPayment\frmPaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing and Payment\StudentPayment\frmPaymentDetails.designer.cs">
+      <DependentUpon>frmPaymentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing and Payment\StudentPayment\PaymentReceiptDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing and Payment\StudentPayment\PaymentReceiptDetails.designer.cs">
+      <DependentUpon>PaymentReceiptDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageGradeLevelSection\frmGradeSectionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageGradeLevelSection\frmGradeSectionList.designer.cs">
+      <DependentUpon>frmGradeSectionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageGradeLevelSection\ManageGradeLevelSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageGradeLevelSection\ManageGradeLevelSection.designer.cs">
+      <DependentUpon>ManageGradeLevelSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSchedule\frmScheduleDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSchedule\frmScheduleDetails.designer.cs">
+      <DependentUpon>frmScheduleDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSchedule\frmScheduleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSchedule\frmScheduleList.designer.cs">
+      <DependentUpon>frmScheduleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSubject\frmLearningAreas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSubject\frmLearningAreas.designer.cs">
+      <DependentUpon>frmLearningAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSubject\frmManageSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageSubject\frmManageSubject.designer.cs">
+      <DependentUpon>frmManageSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageTeachers\frmTeacherDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageTeachers\frmTeacherDetails.designer.cs">
+      <DependentUpon>frmTeacherDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageTeachers\frmTeacherList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Course Related Resources\ManageTeachers\frmTeacherList.designer.cs">
+      <DependentUpon>frmTeacherList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmAdvisersLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmAdvisersLoad.designer.cs">
+      <DependentUpon>frmAdvisersLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmQuarterlyGrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmQuarterlyGrading.designer.cs">
+      <DependentUpon>frmQuarterlyGrading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmTeacherLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmTeacherLoad.designer.cs">
+      <DependentUpon>frmTeacherLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmTraitsQuarterlyGrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quarterly Grading\Grading\frmTraitsQuarterlyGrading.designer.cs">
+      <DependentUpon>frmTraitsQuarterlyGrading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BarChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BarChart.designer.cs">
+      <DependentUpon>BarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateBilling\BillingDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateBilling\BillingDetails.designer.cs">
+      <DependentUpon>BillingDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetInput.designer.cs">
+      <DependentUpon>frmGradingSheetInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetTemplate1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetTemplate1.designer.cs">
+      <DependentUpon>frmGradingSheetTemplate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetTrait1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateGradingSheets\frmGradingSheetTrait1.designer.cs">
+      <DependentUpon>frmGradingSheetTrait1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GeneratePayment\PaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GeneratePayment\PaymentDetails.designer.cs">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GeneratePayment\PaymentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GeneratePayment\PaymentReport.designer.cs">
+      <DependentUpon>PaymentReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GeneratePromotional\PromotionalDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GeneratePromotional\PromotionalDetails.designer.cs">
+      <DependentUpon>PromotionalDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GeneratePromotional\PromotionalTemplate1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GeneratePromotional\PromotionalTemplate1.designer.cs">
+      <DependentUpon>PromotionalTemplate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateProspectus\ProspectusDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateProspectus\ProspectusDetails.designer.cs">
+      <DependentUpon>ProspectusDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateProspectus\ProspectusList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateProspectus\ProspectusList.designer.cs">
+      <DependentUpon>ProspectusList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateSchedule\ScheduleDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateSchedule\ScheduleDetails.designer.cs">
+      <DependentUpon>ScheduleDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentList\StudentListDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentList\StudentListDetails.designer.cs">
+      <DependentUpon>StudentListDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\frmReportDetailsPR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\frmReportDetailsPR.Designer.cs">
+      <DependentUpon>frmReportDetailsPR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\frmStudentSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\frmStudentSelection.designer.cs">
+      <DependentUpon>frmStudentSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\GeneratePermanentRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentPermanentRecord\GeneratePermanentRec.designer.cs">
+      <DependentUpon>GeneratePermanentRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GenerateTeachersLoad\TeachersLoadDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateTeachersLoad\TeachersLoadDetails.designer.cs">
+      <DependentUpon>TeachersLoadDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GridReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\GridReport.designer.cs">
+      <DependentUpon>GridReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LineChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\LineChart.designer.cs">
+      <DependentUpon>LineChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PieChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\PieChart.designer.cs">
+      <DependentUpon>PieChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\FrmActivateTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmActivateTeacher.Designer.cs">
+      <DependentUpon>FrmActivateTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageBuilding\frmBuildingDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageBuilding\frmBuildingDetails.designer.cs">
+      <DependentUpon>frmBuildingDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageBuilding\frmBuildingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageBuilding\frmBuildingList.designer.cs">
+      <DependentUpon>frmBuildingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageCurriculum\frmCurriculumDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageCurriculum\frmCurriculumDetails.designer.cs">
+      <DependentUpon>frmCurriculumDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageCurriculum\frmManageCurriculum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageCurriculum\frmManageCurriculum.designer.cs">
+      <DependentUpon>frmManageCurriculum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageCurriculum\SubjectsDetails.cs" />
+    <Compile Include="Settings\ManageScholarship\frmScholarshipDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageScholarship\frmScholarshipDetails.designer.cs">
+      <DependentUpon>frmScholarshipDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageScholarship\frmScholarshipDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageScholarship\frmScholarshipDiscount.designer.cs">
+      <DependentUpon>frmScholarshipDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageScholarship\frmScholarshipList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageScholarship\frmScholarshipList.designer.cs">
+      <DependentUpon>frmScholarshipList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageStudentFees\frmManageStudentFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageStudentFees\frmManageStudentFee.designer.cs">
+      <DependentUpon>frmManageStudentFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageStudentFees\StudentFeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageStudentFees\StudentFeeList.designer.cs">
+      <DependentUpon>StudentFeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageSY\frmSYList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageSY\frmSYList.designer.cs">
+      <DependentUpon>frmSYList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageTimeSlot\frmTimeSlotDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageTimeSlot\frmTimeSlotDetails.designer.cs">
+      <DependentUpon>frmTimeSlotDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageTimeSlot\frmTimeSlotList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageTimeSlot\frmTimeSlotList.designer.cs">
+      <DependentUpon>frmTimeSlotList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageTraitsbyLevel\frmManageTraits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageTraitsbyLevel\frmManageTraits.designer.cs">
+      <DependentUpon>frmManageTraits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageTraitsbyLevel\frmTraitsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageTraitsbyLevel\frmTraitsList.designer.cs">
+      <DependentUpon>frmTraitsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageUser\frmUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageUser\frmUserDetails.designer.cs">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ManageUser\frmUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ManageUser\frmUserList.designer.cs">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility Classes\Age.cs" />
+    <Compile Include="Utility Classes\GlobalClass.cs" />
+    <Compile Include="Utility Classes\NumToText.cs" />
+    <Compile Include="Utility Classes\RegexUtilities.cs" />
+    <EmbeddedResource Include="Admission and Registration\AssessStudent.resx">
+      <DependentUpon>AssessStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admission and Registration\frmControlSubjects.resx">
+      <DependentUpon>frmControlSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admission and Registration\frmStudentDetails.resx">
+      <DependentUpon>frmStudentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admission and Registration\frmStudentList.resx">
+      <DependentUpon>frmStudentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admission and Registration\frmStudentRegister.resx">
+      <DependentUpon>frmStudentRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admission and Registration\ScheduleSelector.resx">
+      <DependentUpon>ScheduleSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmLogIn.resx">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\LogoutDetails.resx">
+      <DependentUpon>LogoutDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing and Payment\ManageReceipt\frmManageReceipt.resx">
+      <DependentUpon>frmManageReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing and Payment\PrintReceipt\frmPrintReceipt.resx">
+      <DependentUpon>frmPrintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing and Payment\StudentPayment\frmPaymentDetails.resx">
+      <DependentUpon>frmPaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing and Payment\StudentPayment\PaymentReceiptDetails.resx">
+      <DependentUpon>PaymentReceiptDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageGradeLevelSection\frmGradeSectionList.resx">
+      <DependentUpon>frmGradeSectionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageGradeLevelSection\ManageGradeLevelSection.resx">
+      <DependentUpon>ManageGradeLevelSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageSchedule\frmScheduleDetails.resx">
+      <DependentUpon>frmScheduleDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageSchedule\frmScheduleList.resx">
+      <DependentUpon>frmScheduleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageSubject\frmLearningAreas.resx">
+      <DependentUpon>frmLearningAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageSubject\frmManageSubject.resx">
+      <DependentUpon>frmManageSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageTeachers\frmTeacherDetails.resx">
+      <DependentUpon>frmTeacherDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Course Related Resources\ManageTeachers\frmTeacherList.resx">
+      <DependentUpon>frmTeacherList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Quarterly Grading\Grading\frmAdvisersLoad.resx">
+      <DependentUpon>frmAdvisersLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quarterly Grading\Grading\frmQuarterlyGrading.resx">
+      <DependentUpon>frmQuarterlyGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quarterly Grading\Grading\frmTeacherLoad.resx">
+      <DependentUpon>frmTeacherLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quarterly Grading\Grading\frmTraitsQuarterlyGrading.resx">
+      <DependentUpon>frmTraitsQuarterlyGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BarChart.resx">
+      <DependentUpon>BarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateBilling\BillingDetails.resx">
+      <DependentUpon>BillingDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateGradingSheets\frmGradingSheetInput.resx">
+      <DependentUpon>frmGradingSheetInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateGradingSheets\frmGradingSheetTemplate1.resx">
+      <DependentUpon>frmGradingSheetTemplate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateGradingSheets\frmGradingSheetTrait1.resx">
+      <DependentUpon>frmGradingSheetTrait1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GeneratePayment\PaymentDetails.resx">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GeneratePayment\PaymentReport.resx">
+      <DependentUpon>PaymentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GeneratePromotional\PromotionalDetails.resx">
+      <DependentUpon>PromotionalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GeneratePromotional\PromotionalTemplate1.resx">
+      <DependentUpon>PromotionalTemplate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateProspectus\ProspectusDetails.resx">
+      <DependentUpon>ProspectusDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateProspectus\ProspectusList.resx">
+      <DependentUpon>ProspectusList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateSchedule\ScheduleDetails.resx">
+      <DependentUpon>ScheduleDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateStudentList\StudentListDetails.resx">
+      <DependentUpon>StudentListDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateStudentPermanentRecord\frmReportDetailsPR.resx">
+      <DependentUpon>frmReportDetailsPR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateStudentPermanentRecord\frmStudentSelection.resx">
+      <DependentUpon>frmStudentSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateStudentPermanentRecord\GeneratePermanentRec.resx">
+      <DependentUpon>GeneratePermanentRec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GenerateTeachersLoad\TeachersLoadDetails.resx">
+      <DependentUpon>TeachersLoadDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GridReport.resx">
+      <DependentUpon>GridReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LineChart.resx">
+      <DependentUpon>LineChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PieChart.resx">
+      <DependentUpon>PieChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\FrmActivateTeacher.resx">
+      <DependentUpon>FrmActivateTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageBuilding\frmBuildingDetails.resx">
+      <DependentUpon>frmBuildingDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageBuilding\frmBuildingList.resx">
+      <DependentUpon>frmBuildingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageCurriculum\frmCurriculumDetails.resx">
+      <DependentUpon>frmCurriculumDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageCurriculum\frmManageCurriculum.resx">
+      <DependentUpon>frmManageCurriculum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageScholarship\frmScholarshipDetails.resx">
+      <DependentUpon>frmScholarshipDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageScholarship\frmScholarshipDiscount.resx">
+      <DependentUpon>frmScholarshipDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageScholarship\frmScholarshipList.resx">
+      <DependentUpon>frmScholarshipList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageStudentFees\frmManageStudentFee.resx">
+      <DependentUpon>frmManageStudentFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageStudentFees\StudentFeeList.resx">
+      <DependentUpon>StudentFeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageSY\frmSYList.resx">
+      <DependentUpon>frmSYList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageTimeSlot\frmTimeSlotDetails.resx">
+      <DependentUpon>frmTimeSlotDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageTimeSlot\frmTimeSlotList.resx">
+      <DependentUpon>frmTimeSlotList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageTraitsbyLevel\frmManageTraits.resx">
+      <DependentUpon>frmManageTraits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageTraitsbyLevel\frmTraitsList.resx">
+      <DependentUpon>frmTraitsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageUser\frmUserDetails.resx">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ManageUser\frmUserList.resx">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <!--sirinie -->
+    <ProjectReference Include="..\eSARBDO\eSARBDO.csproj">
+      <Project>{dff644e0-6114-42d0-b1e4-dfc3c803fe07}</Project>
+      <Name>eSARBDO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eSARReportLibrary\eSARReportLibrary.csproj">
+      <Project>{27ec2cd2-af00-4de5-b631-eddc45e8d2d4}</Project>
+      <Name>eSARReportLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eSARServiceInterface\eSARServiceInterface.csproj">
+      <Project>{a8b8e24f-0bfd-4431-9f15-1d7d4ed01402}</Project>
+      <Name>eSARServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eSARServiceModels\eSARServiceModels.csproj">
+      <Project>{2680ba9d-449e-46cb-9364-2ff27c1a55f1}</Project>
+      <Name>eSARServiceModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eSARServices\eSARServices.csproj">
+      <Project>{d4cd4728-2eae-473c-856f-f6048f96f2d3}</Project>
+      <Name>eSARServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\decrypt.ico" />
+    <Content Include="Resources\Images\1446795340_schedule.ico" />
+    <Content Include="Resources\Images\1449807851_secure-payment.png" />
+    <Content Include="Resources\Images\Admission.png" />
+    <Content Include="Resources\Images\AdmissionCustomv6.png" />
+    <Content Include="Resources\Images\Autoship.png" />
+    <Content Include="Resources\Images\board.ico" />
+    <Content Include="Resources\Images\books.png" />
+    <Content Include="Resources\Images\building.png" />
+    <Content Include="Resources\Images\calendar.png" />
+    <Content Include="Resources\Images\CreditCards.ico" />
+    <Content Include="Resources\Images\Curr.png" />
+    <Content Include="Resources\Images\Curri.png" />
+    <Content Include="Resources\Images\decrypt.ico" />
+    <Content Include="Resources\Images\distributor-report.png" />
+    <None Include="Resources\Images\Exit.png" />
+    <Content Include="Resources\Images\fee.png" />
+    <Content Include="Resources\Images\File.ico" />
+    <Content Include="Resources\Images\Graph.ico" />
+    <Content Include="Resources\Images\Icon.ico" />
+    <Content Include="Resources\Images\Learning.ico" />
+    <None Include="Resources\Images\manageUsers.png" />
+    <None Include="Resources\Images\lock.png" />
+    <Content Include="Resources\Images\order-history.png" />
+    <Content Include="Resources\Images\people.png" />
+    <Content Include="Resources\Images\Peso Logo.png" />
+    <Content Include="Resources\Images\product-sales-report %281%29.png" />
+    <Content Include="Resources\Images\prospectus.png" />
+    <Content Include="Resources\Images\Quarterly Grading.png" />
+    <Content Include="Resources\Images\Rank-History.png" />
+    <Content Include="Resources\Images\Receipt.png" />
+    <Content Include="Resources\Images\Registration.png" />
+    <Content Include="Resources\Images\reports-icon.png" />
+    <Content Include="Resources\Images\room.png" />
+    <Content Include="Resources\Images\rooms_48.png" />
+    <Content Include="Resources\Images\Sales-by-Payment-Method-rep.png" />
+    <Content Include="Resources\Images\sales-report.png" />
+    <Content Include="Resources\Images\sched.png" />
+    <Content Include="Resources\Images\schedule.png" />
+    <Content Include="Resources\Images\Scholarship.png" />
+    <Content Include="Resources\Images\school.png" />
+    <Content Include="Resources\Images\Setting.ico" />
+    <Content Include="Resources\Images\sign-up.png" />
+    <Content Include="Resources\Images\slots.png" />
+    <Content Include="Resources\Images\spreadsheet.ico" />
+    <Content Include="Resources\Images\StudentAdmission.png" />
+    <Content Include="Resources\Images\timeslots.png" />
+    <Content Include="Resources\Images\Traits Grading.png" />
+    <Content Include="Resources\Images\Upline.png" />
+    <Content Include="Resources\Images\users.png" />
+    <None Include="Resources\sched.png" />
+    <None Include="Resources\school.png" />
+    <None Include="Resources\users.png" />
+    <None Include="Resources\profile.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
